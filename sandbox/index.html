@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Sandbox | DevTools</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; margin: 0; }
+        header { background: #333; color: white; padding: 1rem; }
+        main { display: flex; flex: 1; overflow: hidden; }
+        #editor-container, #preview-container { flex: 1; padding: 20px; display: flex; flex-direction: column; }
+        textarea { flex: 1; font-family: monospace; padding: 10px; font-size: 14px; background: #1e1e1e; color: #d4d4d4; }
+        #preview-container { background: #f4f4f4; align-items: center; justify-content: center; }
+        /* This is the box we will manipulate */
+        #target { width: 200px; height: 200px; background: royalblue; display: flex; align-items: center; text-align: center; color: white; transition: 0.3s; }
+    </style>
+</head>
+<body>
+
+<header>
+    <strong>Swiss-Knife: CSS Sandbox</strong>
+    <a href="../" style="color: #aaa; margin-left: 20px; text-decoration: none;">&larr; Back to Dashboard</a>
+</header>
+
+<main>
+    <div id="editor-container">
+        <h3>Input CSS</h3>
+        <textarea id="css-input" placeholder="/* Target #target */&#10;#target {&#10;  border-radius: 50%;&#10;  transform: rotate(45deg);&#10;}"></textarea>
+    </div>
+
+    <div id="preview-container">
+        <h3>Live Preview</h3>
+        <div id="target">I am the #target</div>
+        <style id="live-styles"></style>
+    </div>
+</main>
+
+<script>
+    const input = document.getElementById('css-input');
+    const styleTag = document.getElementById('live-styles');
+
+    input.addEventListener('input', () => {
+        styleTag.innerHTML = input.value;
+    });
+</script>
+
+</body>
+</html>
+
