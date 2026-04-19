@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OKLCH Color Playground — Compact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎨 Color Playground</h1>
+      <div class="theme-toggle" id="themeToggle">
+        <div class="slider" id="slider">☀️</div>
+      </div>
+    </header>
+
+    <p style="text-align:center; font-size:0.9rem; color:var(--text-light); margin-bottom:20px;">
+      Hover swatches to see Picked (#) vs Inverted (a) contrast.
+    </p>
+
+    <div class="controls">
+      <div class="input-group">
+        <label>Picker</label>
+        <input type="color" id="picker" value="#111111">
+      </div>
+      <div class="input-group">
+        <label>Hex</label>
+        <input type="text" id="hexInput">
+      </div>
+      <div class="input-group">
+        <label>RGBA / Name</label>
+        <input type="text" id="rgbaInput">
+      </div>
+    </div>
+
+    <div class="palette" id="palette"></div>
+
+    <div class="note">
+      Syncs Hex/RGBA/Picker automatically.<br>
+      Click HEX code to copy.
+    </div>
+  </div>
+  
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>
