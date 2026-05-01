@@ -3,298 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Infinite Registry (160+ Assets)</title>
+    <title>Global Emoticon Library</title>
     <style>
         :root {
-            --bg: #0a0a0c;
-            --card: #16161a;
-            --accent: #10b981;
-            --text: #e4e4e7;
-            --muted: #71717a;
-            --border: #27272a;
-            --code-bg: #000000;
+            --bg: #111111;
+            --sidebar-bg: #1a1a1a;
+            --card-bg: #222222;
+            --text: #e7eee7;
+            --primary: #3b82f6;
+            --accent: #ef4444;
+            --border: #333333;
         }
+
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
             background-color: var(--bg);
             color: var(--text);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.4;
+            height: 100vh;
+            overflow: hidden;
         }
-        .header { text-align: center; padding: 50px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
-        .header h1 { color: var(--accent); margin: 0; font-size: 2.8rem; letter-spacing: -1px; }
-        .header p { color: var(--muted); font-size: 1.1rem; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-        
-        section { background: var(--card); border-radius: 16px; border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; }
-        h2 { background: #1a1a20; color: var(--accent); margin: 0; padding: 16px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid var(--border); }
-        
-        .table-wrapper { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        th { text-align: left; background: #000; color: var(--muted); padding: 12px 16px; font-weight: 600; font-size: 0.7rem; }
-        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-        
-        .preview { font-size: 1.8rem; width: 50px; text-align: center; filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); }
-        code { font-family: 'Fira Code', monospace; color: #fb7185; background: var(--code-bg); padding: 3px 6px; border-radius: 4px; font-size: 0.8rem; }
-        .hex { color: #60a5fa; font-family: monospace; font-weight: bold; }
-        
-        tr:hover { background: #1f1f23; }
-        .badge { float: right; background: var(--accent); color: #000; padding: 2px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; }
+        /* Sidebar - Favorites */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            background: #000;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        #favorites-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            margin: 0;
+            list-style: none;
+        }
+
+        .fav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            font-size: 1.5rem;
+            animation: slideIn 0.2s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .remove-btn {
+            cursor: pointer;
+            border: none;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: -2rem;
+            background: var(--bg);
+            z-index: 5;
+        }
+
+        .emoticon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .emoticon-card {
+            background: var(--card-bg);
+            padding: 0.75rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .emoticon-card:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            background: #2a2a2a;
+        }
+
+        .emoji-display {
+            font-size: 2rem;
+            display: block;
+        }
+
+        /* Hide actual checkbox, use the card as the toggle */
+        .fav-checkbox {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .card-active {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .empty-msg {
+            color: #666;
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>160+ Master Asset Registry</h1>
-    <p>The Complete Reference for Developers, Designers, and Creators</p>
-</div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span>⭐ MY FAVORITES</span>
+            <span id="fav-count" style="font-size: 0.8rem; background: var(--primary); padding: 2px 8px; border-radius: 10px;">0</span>
+        </div>
+        <ul id="favorites-list"></ul>
+    </aside>
 
-<div class="grid">
+    <main class="main-content">
+        <h1 style="margin-top:0">Emoticon Database</h1>
+        <div id="emoticon-container"></div>
+    </main>
 
-    <section>
-        <h2>🐕 Animals & Wildlife <span class="badge">20</span></h2>
-        <table>
-            <thead><tr><th>Asset</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Dog</td><td class="preview">🐶</td><td><code>&#128054;</code></td><td class="hex">1F436</td></tr>
-                <tr><td>Cat</td><td class="preview">🐱</td><td><code>&#128049;</code></td><td class="hex">1F431</td></tr>
-                <tr><td>Pig</td><td class="preview">🐷</td><td><code>&#128055;</code></td><td class="hex">1F437</td></tr>
-                <tr><td>Rabbit</td><td class="preview">🐰</td><td><code>&#128048;</code></td><td class="hex">1F430</td></tr>
-                <tr><td>Mouse</td><td class="preview">🐭</td><td><code>&#128045;</code></td><td class="hex">1F42D</td></tr>
-                <tr><td>Fox</td><td class="preview">🦊</td><td><code>&#129418;</code></td><td class="hex">1F98A</td></tr>
-                <tr><td>Bear</td><td class="preview">🐻</td><td><code>&#128059;</code></td><td class="hex">1F43B</td></tr>
-                <tr><td>Panda</td><td class="preview">🐼</td><td><code>&#128060;</code></td><td class="hex">1F43C</td></tr>
-                <tr><td>Lion</td><td class="preview">🦁</td><td><code>&#129409;</code></td><td class="hex">1F981</td></tr>
-                <tr><td>Tiger</td><td class="preview">🐯</td><td><code>&#128047;</code></td><td class="hex">1F42F</td></tr>
-                <tr><td>Frog</td><td class="preview">🐸</td><td><code>&#128056;</code></td><td class="hex">1F438</td></tr>
-                <tr><td>Monkey</td><td class="preview">🐵</td><td><code>&#128053;</code></td><td class="hex">1F435</td></tr>
-                <tr><td>Chicken</td><td class="preview">🐔</td><td><code>&#128020;</code></td><td class="hex">1F414</td></tr>
-                <tr><td>Penguin</td><td class="preview">🐧</td><td><code>&#128039;</code></td><td class="hex">1F427</td></tr>
-                <tr><td>Owl</td><td class="preview">🦉</td><td><code>&#129417;</code></td><td class="hex">1F987</td></tr>
-                <tr><td>Wolf</td><td class="preview">🐺</td><td><code>&#128058;</code></td><td class="hex">1F43A</td></tr>
-                <tr><td>Unicorn</td><td class="preview">🦄</td><td><code>&#129412;</code></td><td class="hex">1F984</td></tr>
-                <tr><td>Bee</td><td class="preview">🐝</td><td><code>&#128029;</code></td><td class="hex">1F41D</td></tr>
-                <tr><td>Butterfly</td><td class="preview">🦋</td><td><code>&#129419;</code></td><td class="hex">1F98B</td></tr>
-                <tr><td>Fish</td><td class="preview">🐟</td><td><code>&#128031;</code></td><td class="hex">1F41F</td></tr>
-            </tbody>
-        </table>
-    </section>
+    <script src="emoticons.js"></script>
 
-    <section>
-        <h2>🌲 Nature & Environment <span class="badge">18</span></h2>
-        <table>
-            <thead><tr><th>Asset</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Evergreen</td><td class="preview">🌲</td><td><code>&#127794;</code></td><td class="hex">1F332</td></tr>
-                <tr><td>Deciduous</td><td class="preview">🌳</td><td><code>&#127795;</code></td><td class="hex">1F333</td></tr>
-                <tr><td>Palm</td><td class="preview">🌴</td><td><code>&#127796;</code></td><td class="hex">1F334</td></tr>
-                <tr><td>Cactus</td><td class="preview">🌵</td><td><code>&#127797;</code></td><td class="hex">1F335</td></tr>
-                <tr><td>Sunflower</td><td class="preview">🌻</td><td><code>&#127803;</code></td><td class="hex">1F33B</td></tr>
-                <tr><td>Rose</td><td class="preview">🌹</td><td><code>&#127801;</code></td><td class="hex">1F339</td></tr>
-                <tr><td>Mushroom</td><td class="preview">🍄</td><td><code>&#127812;</code></td><td class="hex">1F344</td></tr>
-                <tr><td>Mountain</td><td class="preview">⛰️</td><td><code>&#9968;</code></td><td class="hex">26F0</td></tr>
-                <tr><td>Volcano</td><td class="preview">🌋</td><td><code>&#127755;</code></td><td class="hex">1F30B</td></tr>
-                <tr><td>Ocean Wave</td><td class="preview">🌊</td><td><code>&#127754;</code></td><td class="hex">1F30A</td></tr>
-                <tr><td>Sun</td><td class="preview">☀️</td><td><code>&#9728;</code></td><td class="hex">2600</td></tr>
-                <tr><td>Full Moon</td><td class="preview">🌕</td><td><code>&#127765;</code></td><td class="hex">1F315</td></tr>
-                <tr><td>Rain Cloud</td><td class="preview">🌧️</td><td><code>&#127783;</code></td><td class="hex">1F327</td></tr>
-                <tr><td>Thunder</td><td class="preview">⚡</td><td><code>&#9889;</code></td><td class="hex">26A1</td></tr>
-                <tr><td>Snowflake</td><td class="preview">❄️</td><td><code>&#10052;</code></td><td class="hex">2744</td></tr>
-                <tr><td>Wind</td><td class="preview">🌬️</td><td><code>&#127788;</code></td><td class="hex">1F32C</td></tr>
-                <tr><td>Tornado</td><td class="preview">🌪️</td><td><code>&#127786;</code></td><td class="hex">1F32A</td></tr>
-                <tr><td>Fire</td><td class="preview">🔥</td><td><code>&#128293;</code></td><td class="hex">1F525</td></tr>
-            </tbody>
-        </table>
-    </section>
+    <script>
+        const favListUI = document.getElementById('favorites-list');
+        const containerUI = document.getElementById('emoticon-container');
+        const countUI = document.getElementById('fav-count');
 
-    <section>
-        <h2>🤖 Cyber & Dark Entities <span class="badge">16</span></h2>
-        <table>
-            <thead><tr><th>Entity</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Robot Head</td><td class="preview">🤖</td><td><code>&#129302;</code></td><td class="hex">1F916</td></tr>
-                <tr><td>AI Brain</td><td class="preview">🧠</td><td><code>&#129504;</code></td><td class="hex">1F9E0</td></tr>
-                <tr><td>Bionic Arm</td><td class="preview">🦾</td><td><code>&#129470;</code></td><td class="hex">1F9BE</td></tr>
-                <tr><td>Space Alien</td><td class="preview">👽</td><td><code>&#128125;</code></td><td class="hex">1F47D</td></tr>
-                <tr><td>UFO</td><td class="preview">🛸</td><td><code>&#128712;</code></td><td class="hex">1F6F8</td></tr>
-                <tr><td>Retro Game</td><td class="preview">👾</td><td><code>&#128126;</code></td><td class="hex">1F47E</td></tr>
-                <tr><td>Evil Imp</td><td class="preview">😈</td><td><code>&#128520;</code></td><td class="hex">1F608</td></tr>
-                <tr><td>Angry Imp</td><td class="preview">👿</td><td><code>&#128527;</code></td><td class="hex">1F61F</td></tr>
-                <tr><td>Skull</td><td class="preview">💀</td><td><code>&#128128;</code></td><td class="hex">1F480</td></tr>
-                <tr><td>Crossbones</td><td class="preview">☠️</td><td><code>&#9760;</code></td><td class="hex">2620</td></tr>
-                <tr><td>Ghost</td><td class="preview">👻</td><td><code>&#128123;</code></td><td class="hex">1F47B</td></tr>
-                <tr><td>Clown</td><td class="preview">🤡</td><td><code>&#129313;</code></td><td class="hex">1F921</td></tr>
-                <tr><td>Japanese Ogre</td><td class="preview">👹</td><td><code>&#128111;</code></td><td class="hex">1F479</td></tr>
-                <tr><td>Vampire</td><td class="preview">🧛</td><td><code>&#129499;</code></td><td class="hex">1F9DB</td></tr>
-                <tr><td>Zombie</td><td class="preview">🧟</td><td><code>&#129503;</code></td><td class="hex">1F9DF</td></tr>
-                <tr><td>Spider Web</td><td class="preview">🕸️</td><td><code>&#128376;</code></td><td class="hex">1F578</td></tr>
-            </tbody>
-        </table>
-    </section>
+        let favorites = JSON.parse(localStorage.getItem('favEmoticons')) || [];
 
-    <section>
-        <h2>👩 Personas & Roles <span class="badge">18</span></h2>
-        <table>
-            <thead><tr><th>Role</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Gentleman</td><td class="preview">🤵</td><td><code>&#129333;</code></td><td class="hex">1F935</td></tr>
-                <tr><td>Lady</td><td class="preview">👩</td><td><code>&#128105;</code></td><td class="hex">1F469</td></tr>
-                <tr><td>Programmer</td><td class="preview">🧑‍💻</td><td><code>&#129489;</code></td><td class="hex">1F9D1</td></tr>
-                <tr><td>Ninja</td><td class="preview">🥷</td><td><code>&#129399;</code></td><td class="hex">1F977</td></tr>
-                <tr><td>Detective</td><td class="preview">🕵️</td><td><code>&#128373;</code></td><td class="hex">1F575</td></tr>
-                <tr><td>Superhero</td><td class="preview">🦸</td><td><code>&#129464;</code></td><td class="hex">1F9B8</td></tr>
-                <tr><td>Supervillain</td><td class="preview">🦹</td><td><code>&#129465;</code></td><td class="hex">1F9B9</td></tr>
-                <tr><td>Mage</td><td class="preview">🧙</td><td><code>&#129497;</code></td><td class="hex">1F9D9</td></tr>
-                <tr><td>Police</td><td class="preview">👮</td><td><code>&#128110;</code></td><td class="hex">1F46E</td></tr>
-                <tr><td>Doctor</td><td class="preview">🧑‍⚕️</td><td><code>&#129489;</code></td><td class="hex">1F9D1</td></tr>
-                <tr><td>Scientist</td><td class="preview">🧑‍🔬</td><td><code>&#129489;</code></td><td class="hex">1F9D1</td></tr>
-                <tr><td>Artist</td><td class="preview">👨‍🎨</td><td><code>&#128104;</code></td><td class="hex">1F468</td></tr>
-                <tr><td>Astronaut</td><td class="preview">👨‍🚀</td><td><code>&#128104;</code></td><td class="hex">1F468</td></tr>
-                <tr><td>Baby</td><td class="preview">👶</td><td><code>&#128118;</code></td><td class="hex">1F476</td></tr>
-                <tr><td>Elderly</td><td class="preview">🧓</td><td><code>&#129491;</code></td><td class="hex">1F9D3</td></tr>
-                <tr><td>User Group</td><td class="preview">👥</td><td><code>&#128101;</code></td><td class="hex">1F465</td></tr>
-                <tr><td>Family</td><td class="preview">👪</td><td><code>&#128106;</code></td><td class="hex">1F46A</td></tr>
-                <tr><td>Handshake</td><td class="preview">🤝</td><td><code>&#129309;</code></td><td class="hex">1F91D</td></tr>
-            </tbody>
-        </table>
-    </section>
+        function init() {
+            renderMainList();
+            renderFavorites();
+        }
 
-    <section>
-        <h2>⚡ Status & System <span class="badge">20</span></h2>
-        <table>
-            <thead><tr><th>Status</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Passed</td><td class="preview">✅</td><td><code>&#9989;</code></td><td class="hex">2705</td></tr>
-                <tr><td>Failed</td><td class="preview">❌</td><td><code>&#10060;</code></td><td class="hex">274C</td></tr>
-                <tr><td>Warning</td><td class="preview">⚠️</td><td><code>&#9888;</code></td><td class="hex">26A0</td></tr>
-                <tr><td>Critical</td><td class="preview">🚨</td><td><code>&#128680;</code></td><td class="hex">1F6A8</td></tr>
-                <tr><td>Information</td><td class="preview">ℹ️</td><td><code>&#8505;</code></td><td class="hex">2139</td></tr>
-                <tr><td>Syncing</td><td class="preview">🔄</td><td><code>&#128260;</code></td><td class="hex">1F504</td></tr>
-                <tr><td>Loading</td><td class="preview">⌛</td><td><code>&#8987;</code></td><td class="hex">231B</td></tr>
-                <tr><td>Locked</td><td class="preview">🔒</td><td><code>&#128274;</code></td><td class="hex">1F512</td></tr>
-                <tr><td>Database</td><td class="preview">🗄️</td><td><code>&#128452;</code></td><td class="hex">1F5C4</td></tr>
-                <tr><td>Network</td><td class="preview">🌐</td><td><code>&#127760;</code></td><td class="hex">1F310</td></tr>
-                <tr><td>Settings</td><td class="preview">⚙️</td><td><code>&#9881;</code></td><td class="hex">2699</td></tr>
-                <tr><td>Bug/Error</td><td class="preview">🐛</td><td><code>&#128030;</code></td><td class="hex">1F41E</td></tr>
-                <tr><td>Feature/Spark</td><td class="preview">✨</td><td><code>&#10024;</code></td><td class="hex">2728</td></tr>
-                <tr><td>Rocket/Deploy</td><td class="preview">🚀</td><td><code>&#128640;</code></td><td class="hex">1F680</td></tr>
-                <tr><td>Trash</td><td class="hex">🗑️</td><td><code>&#128465;</code></td><td class="hex">1F5D1</td></tr>
-                <tr><td>Search</td><td class="hex">🔍</td><td><code>&#128269;</code></td><td class="hex">1F50D</td></tr>
-                <tr><td>Link</td><td class="hex">🔗</td><td><code>&#128279;</code></td><td class="hex">1F517</td></tr>
-                <tr><td>Bell</td><td class="hex">🔔</td><td><code>&#128276;</code></td><td class="hex">1F514</td></tr>
-                <tr><td>Star/Fav</td><td class="hex">⭐</td><td><code>&#11088;</code></td><td class="hex">2B50</td></tr>
-                <tr><td>Heart/Love</td><td class="hex">❤️</td><td><code>&#10084;</code></td><td class="hex">2764</td></tr>
-            </tbody>
-        </table>
-    </section>
+        function renderMainList() {
+            containerUI.innerHTML = '';
+            for (const [category, items] of Object.entries(emoticonsData)) {
+                const section = document.createElement('div');
+                section.className = 'category-section';
+                
+                const gridHtml = items.map(emoji => {
+                    const isFav = favorites.includes(emoji);
+                    return `
+                        <div class="emoticon-card ${isFav ? 'card-active' : ''}" onclick="toggleFavorite('${emoji}')">
+                            <span class="emoji-display">${emoji}</span>
+                            <input type="checkbox" class="fav-checkbox" ${isFav ? 'checked' : ''} onclick="event.stopPropagation()">
+                        </div>
+                    `;
+                }).join('');
 
-    <section>
-        <h2>✈️ Travel & Places <span class="badge">15</span></h2>
-        <table>
-            <thead><tr><th>Place</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Airplane</td><td class="preview">✈️</td><td><code>&#9992;</code></td><td class="hex">2708</td></tr>
-                <tr><td>Car</td><td class="preview">🚗</td><td><code>&#128663;</code></td><td class="hex">1F697</td></tr>
-                <tr><td>Ship</td><td class="preview">🚢</td><td><code>&#128674;</code></td><td class="hex">1F6A2</td></tr>
-                <tr><td>Rocket</td><td class="preview">🚀</td><td><code>&#128640;</code></td><td class="hex">1F680</td></tr>
-                <tr><td>Map</td><td class="preview">🗺️</td><td><code>&#128506;</code></td><td class="hex">1F5FA</td></tr>
-                <tr><td>Hotel</td><td class="preview">🏨</td><td><code>&#127976;</code></td><td class="hex">1F3E8</td></tr>
-                <tr><td>Hospital</td><td class="preview">🏥</td><td><code>&#127973;</code></td><td class="hex">1F3E5</td></tr>
-                <tr><td>Bank</td><td class="preview">🏦</td><td><code>&#127974;</code></td><td class="hex">1F3E6</td></tr>
-                <tr><td>Office</td><td class="preview">🏢</td><td><code>&#127970;</code></td><td class="hex">1F3E2</td></tr>
-                <tr><td>House</td><td class="preview">🏠</td><td><code>&#127968;</code></td><td class="hex">1F3E0</td></tr>
-                <tr><td>Statue Liberty</td><td class="preview">🗽</td><td><code>&#128509;</code></td><td class="hex">1F5FD</td></tr>
-                <tr><td>Fuji</td><td class="preview">🗻</td><td><code>&#128507;</code></td><td class="hex">1F5FB</td></tr>
-                <tr><td>Island</td><td class="preview">🏝️</td><td><code>&#127933;</code></td><td class="hex">1F3DD</td></tr>
-                <tr><td>Night City</td><td class="preview">🌃</td><td><code>&#127747;</code></td><td class="hex">1F303</td></tr>
-                <tr><td>Fuel</td><td class="preview">⛽</td><td><code>&#9981;</code></td><td class="hex">26FD</td></tr>
-            </tbody>
-        </table>
-    </section>
+                section.innerHTML = `
+                    <div class="category-title">${category}</div>
+                    <div class="emoticon-grid">${gridHtml}</div>
+                `;
+                containerUI.appendChild(section);
+            }
+        }
 
-    <section>
-        <h2>💰 Finance & Tools <span class="badge">15</span></h2>
-        <table>
-            <thead><tr><th>Asset</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Money Bag</td><td class="preview">💰</td><td><code>&#128176;</code></td><td class="hex">1F4B0</td></tr>
-                <tr><td>Credit Card</td><td class="preview">💳</td><td><code>&#128179;</code></td><td class="hex">1F4B3</td></tr>
-                <tr><td>Diamond</td><td class="preview">💎</td><td><code>&#128142;</code></td><td class="hex">1F48E</td></tr>
-                <tr><td>Gift</td><td class="preview">🎁</td><td><code>&#127873;</code></td><td class="hex">1F381</td></tr>
-                <tr><td>Cart</td><td class="preview">🛒</td><td><code>&#128722;</code></td><td class="hex">1F6D2</td></tr>
-                <tr><td>Package</td><td class="preview">📦</td><td><code>&#128230;</code></td><td class="hex">1F4E6</td></tr>
-                <tr><td>Lightbulb</td><td class="preview">💡</td><td><code>&#128161;</code></td><td class="hex">1F4A1</td></tr>
-                <tr><td>Key</td><td class="preview">🔑</td><td><code>&#128273;</code></td><td class="hex">1F511</td></tr>
-                <tr><td>Hammer</td><td class="preview">🔨</td><td><code>&#128296;</code></td><td class="hex">1F528</td></tr>
-                <tr><td>Wrench</td><td class="preview">🔧</td><td><code>&#128295;</code></td><td class="hex">1F527</td></tr>
-                <tr><td>Compass</td><td class="preview">🧭</td><td><code>&#129517;</code></td><td class="hex">1F9ED</td></tr>
-                <tr><td>Microscope</td><td class="preview">🔬</td><td><code>&#128300;</code></td><td class="hex">1F52C</td></tr>
-                <tr><td>Telescope</td><td class="preview">🔭</td><td><code>&#128301;</code></td><td class="hex">1F52D</td></tr>
-                <tr><td>Bomb</td><td class="preview">💣</td><td><code>&#128163;</code></td><td class="hex">1F4A3</td></tr>
-                <tr><td>Sword</td><td class="preview">⚔️</td><td><code>&#9876;</code></td><td class="hex">2694</td></tr>
-            </tbody>
-        </table>
-    </section>
+        function toggleFavorite(emoji) {
+            if (favorites.includes(emoji)) {
+                favorites = favorites.filter(f => f !== emoji);
+            } else {
+                favorites.push(emoji);
+            }
+            save();
+        }
 
-    <section>
-        <h2>😊 Global Sentiment <span class="badge">20</span></h2>
-        <table>
-            <thead><tr><th>Mood</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Joy</td><td class="preview">😂</td><td><code>&#128514;</code></td><td class="hex">1F602</td></tr>
-                <tr><td>Heart Eyes</td><td class="preview">😍</td><td><code>&#128525;</code></td><td class="hex">1F60D</td></tr>
-                <tr><td>Thinking</td><td class="preview">🤔</td><td><code>&#129300;</code></td><td class="hex">1F914</td></tr>
-                <tr><td>Facepalm</td><td class="preview">🤦</td><td><code>&#129318;</code></td><td class="hex">1F926</td></tr>
-                <tr><td>Mind Blown</td><td class="preview">🤯</td><td><code>&#129327;</code></td><td class="hex">1F92F</td></tr>
-                <tr><td>Angry</td><td class="preview">😡</td><td><code>&#128545;</code></td><td class="hex">1F621</td></tr>
-                <tr><td>Cry</td><td class="preview">😢</td><td><code>&#128546;</code></td><td class="hex">1F622</td></tr>
-                <tr><td>Cool</td><td class="preview">😎</td><td><code>&#128526;</code></td><td class="hex">1F60E</td></tr>
-                <tr><td>Shush</td><td class="preview">🤫</td><td><code>&#129323;</code></td><td class="hex">1F92B</td></tr>
-                <tr><td>Party</td><td class="preview">🥳</td><td><code>&#129395;</code></td><td class="hex">1F973</td></tr>
-                <tr><td>Nauseated</td><td class="preview">🤢</td><td><code>&#129314;</code></td><td class="hex">1F922</td></tr>
-                <tr><td>Sleepy</td><td class="preview">😴</td><td><code>&#128564;</code></td><td class="hex">1F634</td></tr>
-                <tr><td>Halo</td><td class="preview">😇</td><td><code>&#128519;</code></td><td class="hex">1F607</td></tr>
-                <tr><td>Sunglasses</td><td class="preview">🕶️</td><td><code>&#128374;</code></td><td class="hex">1F576</td></tr>
-                <tr><td>Money Face</td><td class="preview">🤑</td><td><code>&#129297;</code></td><td class="hex">1F911</td></tr>
-                <tr><td>Explosion</td><td class="preview">💥</td><td><code>&#128165;</code></td><td class="hex">1F4A5</td></tr>
-                <tr><td>Zzz</td><td class="preview">💤</td><td><code>&#128164;</code></td><td class="hex">1F4A4</td></tr>
-                <tr><td>Sweat</td><td class="preview">💦</td><td><code>&#128166;</code></td><td class="hex">1F4A6</td></tr>
-                <tr><td>100</td><td class="preview">💯</td><td><code>&#128175;</code></td><td class="hex">1F4AF</td></tr>
-                <tr><td>OK</td><td class="preview">👌</td><td><code>&#128076;</code></td><td class="hex">1F44C</td></tr>
-            </tbody>
-        </table>
-    </section>
-<section>
-        <h2>👅 Body & Gestures <span class="badge">20</span></h2>
-        <table>
-            <thead><tr><th>Mood/Part</th><th>Icon</th><th>Code</th><th>Hex</th></tr></thead>
-            <tbody>
-                <tr><td>Tongue</td><td class="preview">👅</td><td><code>&#128069;</code></td><td class="hex">1F445</td></tr>
-                <tr><td>Mouth</td><td class="preview">👄</td><td><code>&#128070;</code></td><td class="hex">1F446</td></tr>
-                <tr><td>Winking Tongue</td><td class="preview">😜</td><td><code>&#128540;</code></td><td class="hex">1F61C</td></tr>
-                <tr><td>Squinting Tongue</td><td class="preview">😝</td><td><code>&#128541;</code></td><td class="hex">1F61D</td></tr>
-                <tr><td>Wave</td><td class="preview">👋</td><td><code>&#128075;</code></td><td class="hex">1F44B</td></tr>
-                <tr><td>Thumbs Up</td><td class="preview">👍</td><td><code>&#128077;</code></td><td class="hex">1F44D</td></tr>
-                <tr><td>Clapping</td><td class="preview">👏</td><td><code>&#128079;</code></td><td class="hex">1F44F</td></tr>
-                <tr><td>Flexed Bicep</td><td class="preview">💪</td><td><code>&#128170;</code></td><td class="hex">1F4AA</td></tr>
-                <tr><td>Eyes</td><td class="preview">👀</td><td><code>&#128064;</code></td><td class="hex">1F440</td></tr>
-                <tr><td>Brain</td><td class="preview">🧠</td><td><code>&#129504;</code></td><td class="hex">1F9E0</td></tr>
-                <tr><td>Ear</td><td class="preview">👂</td><td><code>&#128066;</code></td><td class="hex">1F442</td></tr>
-                <tr><td>Nose</td><td class="preview">👃</td><td><code>&#128067;</code></td><td class="hex">1F443</td></tr>
-                <tr><td>Middle Finger</td><td class="preview">🖕</td><td><code>&#128405;</code></td><td class="hex">1F595</td></tr>
-                <tr><td>Writing Hand</td><td class="preview">✍️</td><td><code>&#9997;</code></td><td class="hex">270D</td></tr>
-                <tr><td>Praying Hands</td><td class="preview">🙏</td><td><code>&#128591;</code></td><td class="hex">1F64F</td></tr>
-                <tr><td>Point Up</td><td class="preview">☝️</td><td><code>&#9757;</code></td><td class="hex">261D</td></tr>
-                <tr><td>Handshake</td><td class="preview">🤝</td><td><code>&#129309;</code></td><td class="hex">1F91D</td></tr>
-                <tr><td>Tooth</td><td class="preview">🦷</td><td><code>&#129483;</code></td><td class="hex">1F9B7</td></tr>
-                <tr><td>Leg</td><td class="preview">🦵</td><td><code>&#12948µ;</code></td><td class="hex">1F9B5</td></tr>
-                <tr><td>Foot</td><td class="preview">🦶</td><td><code>&#129486;</code></td><td class="hex">1F9B6</td></tr>
-            </tbody>
-        </table>
-    </section>
-</div>
+        function save() {
+            localStorage.setItem('favEmoticons', JSON.stringify(favorites));
+            countUI.textContent = favorites.length;
+            renderMainList();
+            renderFavorites();
+        }
 
+        function renderFavorites() {
+            favListUI.innerHTML = '';
+            countUI.textContent = favorites.length;
+
+            if (favorites.length === 0) {
+                favListUI.innerHTML = '<li class="empty-msg">Select emojis to add them here</li>';
+                return;
+            }
+
+            favorites.forEach(emoji => {
+                const li = document.createElement('li');
+                li.className = 'fav-item';
+                li.innerHTML = `
+                    <span>${emoji}</span>
+                    <button class="remove-btn" onclick="toggleFavorite('${emoji}')">REMOVE</button>
+                `;
+                favListUI.appendChild(li);
+            });
+        }
+
+        init();
+    </script>
 </body>
 </html>
