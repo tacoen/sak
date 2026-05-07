@@ -1,0 +1,4 @@
+@layer base,pages,components,etc;
+
+@import "./css/vars.css" layer(base);
+@import "./css/base.css" layer(base);
