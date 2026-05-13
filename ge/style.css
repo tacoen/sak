@@ -1,4 +1,5 @@
-@layer base,pages,components,etc;
-
+@layer base, pages, components, etc, utils;
 @import "./css/vars.css" layer(base);
 @import "./css/base.css" layer(base);
+
+@import "./css/utils.css" layer(utils);

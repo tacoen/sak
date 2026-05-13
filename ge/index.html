@@ -112,9 +112,7 @@
                 <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--sc);"></div><div class="color-swatch-label">--sc · success</div></div>
                 <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--da);"></div><div class="color-swatch-label">--da · danger</div></div>
                 <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--wr);"></div><div class="color-swatch-label">--wr · warning</div></div>
-                <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--muted);"></div><div class="color-swatch-label">--muted</div></div>
-                <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--link);"></div><div class="color-swatch-label">--link</div></div>
-            </div>
+			</div>
         </div>
 
         <!-- Accent Variants -->
@@ -158,14 +156,30 @@
 
         <!-- Backgrounds & Borders -->
         <div class="section">
+
             <div class="section-label">backgrounds</div>
+
             <div class="bg-row">
-                <div class="bg-chip" style="background: var(--bg);">--bg</div>
-                <div class="bg-chip" style="background: var(--bg-subtle);">--bg-subtle</div>
-                <div class="bg-chip" style="background: var(--bg-overlay);">--bg-overlay</div>
-                <div class="bg-chip" style="background: var(--bg-inset);">--bg-inset</div>
+				<div class="bg-chip" style="background: var(--bg);">
+				<h5>--bg</h5>
+				<p class='mt1'><span style='color: var(--fg)'>Lorem ipsum dolor sit amet, <span style='color: var(--muted)'>consectetur <a>adipiscing</a> elit</span>.</span></p>
+				</div>
+                <div class="bg-chip" style="background: var(--bg-subtle);">
+				<h5>--bg-subtle</h5>
+				<p class='mt1'><span style='color: var(--fg)'>Lorem ipsum dolor sit amet, <span style='color: var(--muted)'>consectetur <a>adipiscing</a> elit</span>.</span></p>
+				</div>
+				<div class="bg-chip" style="background: var(--bg-overlay);">
+				<h5>--bg-overlay</h5>
+				<p class='mt1'><span style='color: var(--fg)'>Lorem ipsum dolor sit amet, <span style='color: var(--muted)'>consectetur <a>adipiscing</a> elit</span>.</span></p>
+				</div>
+				<div class="bg-chip" style="background: var(--bg-inset);">				
+				<h5>--bg-inset</h5>
+				<p class='mt1'><span style='color: var(--fg)'>Lorem ipsum dolor sit amet, <span style='color: var(--muted)'>consectetur <a>adipiscing</a> elit</span>.</span></p>
+				</div>
             </div>
+
             <div class="section-label">borders</div>
+
             <div class="border-row">
                 <div class="border-chip" style="border: 1px solid var(--border-muted);">--border-muted</div>
                 <div class="border-chip" style="border: 1px solid var(--border);">--border</div>
@@ -266,16 +280,60 @@
             </div>
         </div>
 
-        <!-- HR -->
-        <div class="section">
-            <div class="section-label">hr</div>
-            <div class="hr-demo">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <hr>
-                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
+        <!-- Utilities -->
+        <div class="section utils">
+            <div class="section-label">utilities — flex</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--lg);">
 
+                <!-- Row + gap -->
+                <div>
+                    <div class="type-meta">.flex.row.gap-3</div>
+                    <div class="flex row gap-3" style="background: var(--bg-subtle); border: 1px solid var(--border-muted); padding: var(--sm);">
+                        <button class="demo">Button 1</button>
+                        <button class="demo">Button 2</button>
+                        <button class="demo pr">Primary</button>
+                    </div>
+                </div>
+
+                <!-- Column -->
+                <div>
+                    <div class="type-meta">.flex.column.center.middle</div>
+                    <div class="flex column center middle" style="background: var(--bg-subtle); border: 1px solid var(--border-muted); padding: var(--lg);">
+                        <button class="demo sc">Success Button</button>
+                    </div>
+                </div>
+
+                <!-- Between -->
+                <div>
+                    <div class="type-meta">.flex.between</div>
+                    <div class="flex between" style="background: var(--bg-subtle); border: 1px solid var(--border-muted); padding: var(--sm);">
+                        <button class="demo">Left</button>
+                        <button class="demo wr">Warning</button>
+                        <button class="demo da">Danger</button>
+                    </div>
+                </div>
+
+                <!-- Grow -->
+                <div>
+                    <div class="type-meta">.flex.grow</div>
+                    <div class="flex row gap-3" style="background: var(--bg-subtle); border: 1px solid var(--border-muted); padding: var(--sm);">
+                        <button class="demo" style="flex-shrink: 0;">Fixed</button>
+                        <button class="demo flex grow pr">Grows to fill</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="type-meta" style="margin-top: var(--lg);">
+                All available modifiers in <code>utils.css</code>:<br>
+                <code>.flex</code> + 
+                <code>row</code> | <code>column</code> | 
+                <code>center</code> | <code>between</code> | <code>left</code> | 
+                <code>gap-*</code> | <code>grow</code> | <code>wrap</code> ...
+            </p>
+        </div>
+		
     </div><!-- /ge-main -->
 
     <!-- Modal -->
@@ -290,6 +348,8 @@
         </div>
     </div>
 
+        
+		
     <div id="ge-popup"></div>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="index-script.js"></script>

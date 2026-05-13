@@ -109,6 +109,6 @@ table {
 }
 
 /* Scrollbars */
-::-webkit-scrollbar             { width: 4px; background: var(--bg-inset); }
-::-webkit-scrollbar-thumb       { border-radius: 4px; background: var(--border); }
+::-webkit-scrollbar             { width: var(--scroll-width); background: var(--bg-inset); }
+::-webkit-scrollbar-thumb       { border-radius: var(--scroll-width); background: var(--border); }
 ::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
