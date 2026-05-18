@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ge 骨 — Design System</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="ge-style.css">
+</head>
+<body>
+
+    <!-- Vertical sidebar -->
+    <div class="ge-bar">
+        <div class="ge-bar-brand">骨<br><span>Ge</span></div>
+        <div class="ge-bar-pickers">
+            <div class="ge-picker-group"><span>--bg</span><input type="color" id="bgPicker" value="#181118"></div>
+            <div class="ge-picker-group"><span>--fg</span><input type="color" id="fgPicker" value="#e7eee7"></div>
+            <div class="ge-picker-group"><span>--pr</span><input type="color" id="prPicker"></div>
+            <div class="ge-picker-group"><span>--sc</span><input type="color" id="scPicker"></div>
+            <div class="ge-picker-group"><span>--da</span><input type="color" id="daPicker"></div>
+            <div class="ge-picker-group"><span>--wr</span><input type="color" id="wrPicker"></div>
+        </div>
+        <span class="ge-hex" id="hexValue">#181118</span>
+        <button class="ge-export-btn" id="exportToggle">CSS export</button>
+
+    </div>
+
+    <!-- CSS export panel -->
+    <div class="ge-export-panel" id="exportPanel">
+        <div class="ge-export-panel-head">
+            <span>:root export</span>
+            <button class="ge-close" id="exportClose">&#x2715;</button>
+        </div>
+        <textarea id="cssOutput" readonly spellcheck="false"></textarea>
+    </div>
+
+    <div class="ge-main">
+
+        <!-- Philosophy -->
+        <div class="section" style="padding-top: var(--lg);">
+            <div class="section-label">Ge 骨</div>
+            <p style="font-family: var(--font-serif); font-size: 1.1rem; line-height: 1.8; max-width: 560px;">A design system is not decoration. It is the bone structure beneath everything — invisible when done right, catastrophic when missing. Ge provides only what is necessary: the skeleton. Flesh, skin, expression — that belongs to what is built on top.</p>
+            <p style="font-family: var(--font-mono); font-size: var(--xs); color: var(--muted); margin-top: var(--md);">bone &middot; skeleton &middot; framework &middot; spirit</p>
+
+		</div>
+        <div class="section" style="padding-top: var(--lg);">
+            <div class="section-label">Deployment</div>
+
+<div class="code-demo">
+                <pre>@layer base,pages,components,etc;
+
+@import "./css/vars.css" layer(base); /*CSS Export Output*/
+@import "./css/base.css" layer(base);
+</div>
+        <!-- Docs links -->
+        <nav class="ge-docs">
+            <button class="ge-doc-link" data-src="README.md" data-title="readme.md">
+                <span class="ge-doc-name">readme.md</span>
+                <span class="ge-doc-desc">The what and why of Ge. Start here.</span>
+            </button>
+            <button class="ge-doc-link" data-src="css/base.css" data-title="css/base.css">
+                <span class="ge-doc-name">css/base.css</span>
+                <span class="ge-doc-desc">The skeleton itself.</span>
+            </button>
+        </nav>
+
+        </div>
+
+        <!-- Headings -->
+        <div class="section">
+            <div class="section-label">headings — h1 through h6</div>
+            <div class="headings-demo">
+                <div class="heading-row"><span class="heading-tag">h1</span><h1>Lorem ipsum dolor sit amet consectetur</h1></div>
+                <div class="heading-row"><span class="heading-tag">h2</span><h2>Adipiscing elit sed do eiusmod tempor</h2></div>
+                <div class="heading-row"><span class="heading-tag">h3</span><h3>Incididunt ut labore et dolore magna aliqua</h3></div>
+                <div class="heading-row"><span class="heading-tag">h4</span><h4>Ut enim ad minim veniam quis nostrud</h4></div>
+                <div class="heading-row"><span class="heading-tag">h5</span><h5>Exercitation ullamco laboris nisi aliquip</h5></div>
+                <div class="heading-row"><span class="heading-tag">h6</span><h6>Duis aute irure dolor in reprehenderit</h6></div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <div class="section-label">typography</div>
+            <div class="type-row">
+                <div class="type-meta">--font-sans · body</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            </div>
+            <div class="type-row">
+                <div class="type-meta">--font-mono · code</div>
+                <code>const token = color-mix(in srgb, cyan, var(--fg) 50%);</code>
+            </div>
+            <div class="type-row">
+                <div class="type-meta">--font-serif · editorial</div>
+                <p style="font-family: var(--font-serif);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="type-row">
+                <div class="type-meta">--muted · secondary text</div>
+                <p style="color: var(--muted);">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <div class="type-row">
+                <div class="type-meta">a · link hover</div>
+                <p>Hover over this <a href="#">link to see</a> the color and underline transition.</p>
+            </div>
+        </div>
+
+        <!-- Functional Colors -->
+        <div class="section">
+            <div class="section-label">functional colors</div>
+            <div class="color-grid">
+                <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--pr);"></div><div class="color-swatch-label">--pr · primary</div></div>
+                <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--sc);"></div><div class="color-swatch-label">--sc · success</div></div>
+                <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--da);"></div><div class="color-swatch-label">--da · danger</div></div>
+                <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--wr);"></div><div class="color-swatch-label">--wr · warning</div></div>
+                <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--muted);"></div><div class="color-swatch-label">--muted</div></div>
+                <div class="color-swatch"><div class="color-swatch-bar" style="background: var(--link);"></div><div class="color-swatch-label">--link</div></div>
+            </div>
+        </div>
+
+        <!-- Accent Variants -->
+        <div class="section">
+            <div class="section-label">accent variants</div>
+            <div class="accent-grid">
+                <div class="accent-card" style="border: 1px solid var(--pr-border);">
+                    <div class="accent-card-head" style="background: var(--pr-bg); color: var(--pr); border-bottom-color: var(--pr-border);">primary</div>
+                    <div class="accent-card-body" style="background: var(--pr-subtle);">
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--pr-bg);"></div>--pr-bg</div>
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--pr-subtle);"></div>--pr-subtle</div>
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--pr-border);"></div>--pr-border</div>
+                    </div>
+                </div>
+                <div class="accent-card" style="border: 1px solid var(--sc-border);">
+                    <div class="accent-card-head" style="background: var(--sc-bg); color: var(--sc); border-bottom-color: var(--sc-border);">success</div>
+                    <div class="accent-card-body" style="background: var(--sc-subtle);">
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--sc-bg);"></div>--sc-bg</div>
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--sc-subtle);"></div>--sc-subtle</div>
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--sc-border);"></div>--sc-border</div>
+                    </div>
+                </div>
+                <div class="accent-card" style="border: 1px solid var(--da-border);">
+                    <div class="accent-card-head" style="background: var(--da-bg); color: var(--da); border-bottom-color: var(--da-border);">danger</div>
+                    <div class="accent-card-body" style="background: var(--da-subtle);">
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--da-bg);"></div>--da-bg</div>
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--da-subtle);"></div>--da-subtle</div>
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--da-border);"></div>--da-border</div>
+                    </div>
+                </div>
+                <div class="accent-card" style="border: 1px solid var(--wr-border);">
+                    <div class="accent-card-head" style="background: var(--wr-bg); color: var(--wr); border-bottom-color: var(--wr-border);">warning</div>
+                    <div class="accent-card-body" style="background: var(--wr-subtle);">
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--wr-bg);"></div>--wr-bg</div>
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--wr-subtle);"></div>--wr-subtle</div>
+                        <div class="accent-row"><div class="accent-dot" style="background: var(--wr-border);"></div>--wr-border</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backgrounds & Borders -->
+        <div class="section">
+            <div class="section-label">backgrounds</div>
+            <div class="bg-row">
+                <div class="bg-chip" style="background: var(--bg);">--bg</div>
+                <div class="bg-chip" style="background: var(--bg-subtle);">--bg-subtle</div>
+                <div class="bg-chip" style="background: var(--bg-overlay);">--bg-overlay</div>
+                <div class="bg-chip" style="background: var(--bg-inset);">--bg-inset</div>
+            </div>
+            <div class="section-label">borders</div>
+            <div class="border-row">
+                <div class="border-chip" style="border: 1px solid var(--border-muted);">--border-muted</div>
+                <div class="border-chip" style="border: 1px solid var(--border);">--border</div>
+                <div class="border-chip" style="border: 1px solid var(--border-hover);">--border-hover</div>
+            </div>
+        </div>
+
+        <!-- Spacing -->
+        <div class="section">
+            <div class="section-label">spacing</div>
+            <div class="spacing-row">
+                <div class="spacing-block"><div class="spacing-bar" style="height: 4px;"></div><div class="spacing-val">--xxs</div><div class="spacing-val">.25rem</div></div>
+                <div class="spacing-block"><div class="spacing-bar" style="height: 8px;"></div><div class="spacing-val">--xs</div><div class="spacing-val">.5rem</div></div>
+                <div class="spacing-block"><div class="spacing-bar" style="height: 16px;"></div><div class="spacing-val">--sm</div><div class="spacing-val">1rem</div></div>
+                <div class="spacing-block"><div class="spacing-bar" style="height: 24px;"></div><div class="spacing-val">--md</div><div class="spacing-val">1.5rem</div></div>
+                <div class="spacing-block"><div class="spacing-bar" style="height: 32px;"></div><div class="spacing-val">--lg</div><div class="spacing-val">2rem</div></div>
+                <div class="spacing-block"><div class="spacing-bar" style="height: 40px;"></div><div class="spacing-val">--xlg</div><div class="spacing-val">2.5rem</div></div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="section">
+            <div class="section-label">buttons</div>
+            <div class="button-row">
+                <button class="demo">default</button>
+                <button class="demo" disabled>disabled</button>
+                <button class="demo pr">primary</button>
+                <button class="demo sc">success</button>
+                <button class="demo da">danger</button>
+                <button class="demo wr">warning</button>
+            </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="section">
+            <div class="section-label">badges</div>
+            <div class="badge-row">
+                <span class="badge" style="background: var(--pr-bg); border-color: var(--pr-border); color: var(--pr);">primary</span>
+                <span class="badge" style="background: var(--sc-bg); border-color: var(--sc-border); color: var(--sc);">success</span>
+                <span class="badge" style="background: var(--da-bg); border-color: var(--da-border); color: var(--da);">danger</span>
+                <span class="badge" style="background: var(--wr-bg); border-color: var(--wr-border); color: var(--wr);">warning</span>
+                <span class="badge" style="background: var(--bg-subtle); border-color: var(--border-muted); color: var(--muted);">muted</span>
+            </div>
+        </div>
+
+        <!-- Forms -->
+        <div class="section">
+            <div class="section-label">forms</div>
+            <div class="form-demo">
+                <div>
+                    <label>text input</label>
+                    <input type="text" placeholder="Lorem ipsum...">
+                </div>
+                <div>
+                    <label>select</label>
+                    <select>
+                        <option>Lorem ipsum</option>
+                        <option>Dolor sit amet</option>
+                        <option>Consectetur adipiscing</option>
+                    </select>
+                </div>
+                <div>
+                    <label>textarea</label>
+                    <textarea rows="3" placeholder="Lorem ipsum dolor sit amet..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="section">
+            <div class="section-label">table</div>
+            <table class="table-demo">
+                <thead>
+                    <tr>
+                        <th>token</th>
+                        <th>value</th>
+                        <th>use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>--xxs</code></td><td>.25rem</td><td>Tight inline gaps</td></tr>
+                    <tr><td><code>--xs</code></td><td>.5rem</td><td>Small padding</td></tr>
+                    <tr><td><code>--sm</code></td><td>1rem</td><td>Base unit</td></tr>
+                    <tr><td><code>--md</code></td><td>1.5rem</td><td>Medium spacing</td></tr>
+                    <tr><td><code>--lg</code></td><td>2rem</td><td>Section spacing</td></tr>
+                    <tr><td><code>--xlg</code></td><td>2.5rem</td><td>Large section spacing</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Code -->
+        <div class="section">
+            <div class="section-label">code block</div>
+            <div class="code-demo">
+                <pre>--pr-bg: color-mix(in srgb, var(--bg), var(--pr) 20%);
+--pr-subtle: color-mix(in srgb, var(--bg), var(--pr) 10%);
+--pr-border: color-mix(in srgb, var(--bg), var(--pr) 40%);</pre>
+            </div>
+        </div>
+
+        <!-- HR -->
+        <div class="section">
+            <div class="section-label">hr</div>
+            <div class="hr-demo">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <hr>
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+
+    </div><!-- /ge-main -->
+
+    <!-- Modal -->
+    <div id="ge-modal" class="ge-modal">
+        <div class="ge-modal-backdrop" id="geModalBackdrop"></div>
+        <div class="ge-modal-box">
+            <div class="ge-modal-head">
+                <span class="ge-modal-title" id="geModalTitle"></span>
+                <button class="ge-close" id="geModalClose">&#x2715;</button>
+            </div>
+            <div class="ge-modal-body" id="geModalBody"></div>
+        </div>
+    </div>
+
+    <div id="ge-popup"></div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="ge-index.js"></script>
+
+</body>
+</html>

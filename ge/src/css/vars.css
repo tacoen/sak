@@ -2,9 +2,8 @@
     /* Base Colors */
     --white: #ffffff;
     --black: #000000;
-    --bg: #181118;
-    --fg: #e7eee7;
-
+	--shadow: color-mix(in srgb, var(--black), transparent 50%);
+	
     /* Spacing */
     --vxs: .25rem;
     --xs: .5rem;
@@ -12,51 +11,68 @@
     --md: 1rem;
     --lg: 1.5rem;
     --xlg: 2rem;
+    --vlg: 2.5rem;
 	--scroll-width: 4px;
-
+	
     /* Typography */
     --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
     --font-serif: Georgia, "Times New Roman", serif;
 }
 
-body {
-
+[data-theme='dark'] {
+    --bg: #181118;
+    --fg: #e7eee7;
     --muted: color-mix(in srgb, gray, var(--fg) 50%);
     --link: color-mix(in srgb, blue, var(--fg) 50%);
+    /* Core Backgrounds */
+    --bg-subtle: color-mix(in srgb, var(--bg), var(--white) 5%);
+    --bg-inset: color-mix(in srgb, var(--bg), var(--black) 30%);
+    --bg-overlay: color-mix(in srgb, var(--bg), var(--black) 15%);
+    /* Core Borders */
+    --border-muted: color-mix(in srgb, var(--bg), var(--white) 10%);
+    --border: color-mix(in srgb, var(--bg), var(--white) 15%);
+    --border-hover: color-mix(in srgb, var(--bg), var(--white) 20%);
+}
 
+[data-theme='light'] {
+    --bg: #e7e7e7;
+    --fg: #181818;
+    --muted: color-mix(in srgb, gray, var(--fg) 50%);
+    --link: color-mix(in srgb, blue, var(--fg) 50%);
+    /* Core Backgrounds */
+    --bg-subtle: color-mix(in srgb, var(--bg), var(--white) 5%);
+    --bg-inset: color-mix(in srgb, var(--bg), var(--black) 30%);
+    --bg-overlay: color-mix(in srgb, var(--bg), var(--black) 15%);
+    /* Core Borders */
+    --border-muted: color-mix(in srgb, var(--bg), var(--white) 10%);
+    --border: color-mix(in srgb, var(--bg), var(--white) 15%);
+    --border-hover: color-mix(in srgb, var(--bg), var(--white) 20%);
+}
+
+
+body {
     /* Functional Colors */
     --pr: color-mix(in srgb, cyan, var(--fg) 50%);
     --sc: color-mix(in srgb, green, var(--fg) 50%);
     --da: color-mix(in srgb, red, var(--fg) 50%);
     --wr: color-mix(in srgb, yellow, var(--fg) 50%);
-	
-    /* Core Backgrounds */
-    --bg-subtle: color-mix(in srgb, var(--bg), var(--white) 5%);
-    --bg-inset: color-mix(in srgb, var(--bg), var(--black) 30%);
-    --bg-overlay: color-mix(in srgb, var(--bg), var(--black) 15%);
-
-    /* Core Borders */
-    --border-muted: color-mix(in srgb, var(--bg), var(--white) 10%);
-    --border: color-mix(in srgb, var(--bg), var(--white) 15%);
-    --border-hover: color-mix(in srgb, var(--bg), var(--white) 20%);
-
-
+	/* link/button */
+    --link-bg: color-mix(in srgb, var(--bg), var(--link) 20%);
+    --link-subtle: color-mix(in srgb, var(--bg), var(--link) 10%);
+    --link-border: color-mix(in srgb, var(--bg), var(--link) 40%);
     /* Primary Variants */
     --pr-bg: color-mix(in srgb, var(--bg), var(--pr) 20%);
     --pr-subtle: color-mix(in srgb, var(--bg), var(--pr) 10%);
     --pr-border: color-mix(in srgb, var(--bg), var(--pr) 40%);
-
     /* Success Variants */
     --sc-bg: color-mix(in srgb, var(--bg), var(--sc) 20%);
     --sc-subtle: color-mix(in srgb, var(--bg), var(--sc) 10%);
     --sc-border: color-mix(in srgb, var(--bg), var(--sc) 40%);
-
     /* Danger Variants */
     --da-bg: color-mix(in srgb, var(--bg), var(--da) 20%);
     --da-subtle: color-mix(in srgb, var(--bg), var(--da) 10%);
     --da-border: color-mix(in srgb, var(--bg), var(--da) 40%);
-
     /* Warning Variants */
     --wr-bg: color-mix(in srgb, var(--bg), var(--wr) 20%);
     --wr-subtle: color-mix(in srgb, var(--bg), var(--wr) 10%);

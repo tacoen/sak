@@ -46,17 +46,8 @@ function updateExport() {
 `:root {
     --white: #ffffff;
     --black: #000000;
-    --bg: #181118;
-    --fg: #e7eee7;
-    --vxs: .25rem;
-    --xs: .5rem;
-    --sm: .75rem;
-    --md: 1rem;
-    --lg: 1.5rem;
-    --xlg: 2rem;
-    --scroll-width: 4px;
-}
-body {
+    --bg: ${state['--bg']};
+    --fg: ${state['--fg']};
     --muted: ${state['--muted']};
     --link: ${state['--link']};
     --pr: ${state['--pr']};

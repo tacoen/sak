@@ -8,6 +8,7 @@ body {
     padding: var(--xlg) var(--lg);
 }
 
+/* â”€â”€ Vertical sidebar bar â”€â”€ */
 .ge-bar {
     position: fixed;
     top: 0; left: 0; bottom: 0;
@@ -48,13 +49,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--xxs);
+    gap: var(--sm);
     flex: 1;
 }
 
 .ge-picker-group {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: center;
     gap: 2px;
 }
@@ -99,6 +100,7 @@ input[type="color"]:hover { border-color: var(--border-hover); }
 }
 .ge-export-btn:hover { border-color: var(--border-hover); color: var(--fg); }
 
+/* â”€â”€ CSS export panel â”€â”€ */
 .ge-export-panel {
     display: none;
     position: fixed;
@@ -109,7 +111,7 @@ input[type="color"]:hover { border-color: var(--border-hover); }
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: var(--sm);
-    width: 600px;
+    width: 400px;
 }
 .ge-export-panel.open { display: block; }
 
@@ -147,8 +149,10 @@ input[type="color"]:hover { border-color: var(--border-hover); }
 }
 .ge-close:hover { color: var(--fg); }
 
+/* â”€â”€ Sections â”€â”€ */
 .section {
     margin-bottom: var(--xlg);
+    padding-bottom: var(--xlg);
     border-bottom: 1px solid var(--border-muted);
 }
 .section:first-child,
@@ -190,7 +194,7 @@ input[type="color"]:hover { border-color: var(--border-hover); }
 /* Borders / bg */
 .border-row { display: flex; gap: var(--sm); flex-wrap: wrap; }
 .border-chip { padding: var(--xs) var(--sm); border-radius: 4px; font-family: var(--font-mono); font-size: .7rem; color: var(--muted); }
-.bg-row {display: flex;gap: var(--xs);flex-wrap: wrap;margin-bottom: var(--lg);}
+.bg-row { display: flex; gap: var(--xs); flex-wrap: wrap; margin-bottom: var(--sm); }
 .bg-chip { flex: 1; min-width: 120px; padding: var(--sm); border-radius: 4px; border: 1px solid var(--border-muted); font-family: var(--font-mono); font-size: .65rem; color: var(--muted); }
 
 /* Buttons */
@@ -247,7 +251,7 @@ button.demo.wr { border-color: var(--wr-border); color: var(--wr); background: v
     line-height: 1.8;
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Docs nav Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* â”€â”€ Docs nav â”€â”€ */
 .ge-docs {
     display: flex;
     flex-direction: row;
@@ -291,6 +295,7 @@ button.demo.wr { border-color: var(--wr-border); color: var(--wr); background: v
     line-height: 1.4;
 }
 
+/* â”€â”€ Modal â”€â”€ */
 .ge-modal {
     display: none;
     position: fixed;
@@ -399,5 +404,8 @@ button.demo.wr { border-color: var(--wr-border); color: var(--wr); background: v
 .ge-modal-body a { color: var(--link); }
 .ge-modal-body strong { color: var(--fg); }
 
-
-.section.utils .type-meta { margin-bottom: var(--xs); }
+* { transition: 
+        color .1s .5s ease, 
+        border .15s .3s ease-out, 
+        background .2s .3s linear;
+}

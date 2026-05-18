@@ -112,3 +112,67 @@ table {
 ::-webkit-scrollbar             { width: var(--scroll-width); background: var(--bg-inset); }
 ::-webkit-scrollbar-thumb       { border-radius: var(--scroll-width); background: var(--border); }
 ::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+/* UI Components */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--md);
+  min-width: 320px;
+  max-width: 480px;
+  box-shadow: 0 var(--vxs) var(--md) var(--shadow);
+  display: none;
+  z-index: 1001;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: var(--md);
+  right: var(--md);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs);
+}
+
+.toast {
+  padding: var(--sm) var(--md);
+  border-radius: 6px;
+  color: var(--fg);
+  font-size: var(--sm);
+  box-shadow: 0 var(--vxs) var(--md) var(--shadow);
+  opacity: 1;
+  transition: all 0.3s ease;
+  border: 1px solid;
+}
+
+.toast-success { background: var(--sc-bg); border-color: var(--sc-border); }
+.toast-error   { background: var(--da-bg); border-color: var(--da-border); }
+.toast-info    { background: var(--pr-bg); border-color: var(--pr-border); }
+.toast-warning { background: var(--wr-bg); border-color: var(--wr-border); color: var(--bg); }
+
+.accordion-header {
+  cursor: pointer;
+  padding: var(--sm) var(--md);
+}
+
+.accordion-content {
+  display: none;
+  padding: var(--sm) var(--md);
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}

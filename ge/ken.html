@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>剣 Ken geUI Showcase</title>
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="ken-style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     APP SHELL
+═══════════════════════════════════════════════ -->
+<div class="ken-app">
+
+  <!-- Header -->
+  <header class="ken-header">
+    <div class="ken-header-left">
+      <span class="ken-brand">剣</span>
+      <span class="ken-brand-sub">geUI + geIcon Showcase</span>
+    </div>
+    <div class="ken-header-actions">
+      <span class="info-pill">
+        <svg data-icon="activity-heartbeat"></svg>
+        All APIs Demonstrated
+      </span>
+      <!-- Theme toggle — icon injected by ken.js -->
+      <button class="btn btn-ghost btn-icon" id="themeToggle" aria-label="Toggle theme"></button>
+    </div>
+  </header>
+
+  <!-- Body -->
+  <div class="ken-body">
+
+    <!-- Sidebar -->
+    <nav class="ken-sidebar" aria-label="Section navigation">
+      <span class="ken-sidebar-label">icx API</span>
+      <a class="ken-nav-item" href="#sec-icons">
+        <svg data-icon="layout-kanban"></svg>
+        Icon Library
+      </a>
+
+      <span class="ken-sidebar-label">Components</span>
+      <a class="ken-nav-item" href="#sec-buttons">
+        <svg data-icon="check"></svg>
+        Buttons
+      </a>
+      <a class="ken-nav-item" href="#sec-badges">
+        <svg data-icon="letter-s-fill"></svg>
+        Badges
+      </a>
+      <a class="ken-nav-item" href="#sec-toast">
+        <svg data-icon="activity-heartbeat"></svg>
+        Toast
+      </a>
+      <a class="ken-nav-item" href="#sec-tabs">
+        <svg data-icon="list"></svg>
+        Tabs
+      </a>
+      <a class="ken-nav-item" href="#sec-accordion">
+        <svg data-icon="list-numbers"></svg>
+        Accordion
+      </a>
+      <a class="ken-nav-item" href="#sec-modal">
+        <svg data-icon="eye"></svg>
+        Modal
+      </a>
+
+      <span class="ken-sidebar-label">geUIHelper</span>
+      <a class="ken-nav-item" href="#sec-form">
+        <svg data-icon="edit"></svg>
+        Form
+      </a>
+      <a class="ken-nav-item" href="#sec-dom">
+        <svg data-icon="settings-cog"></svg>
+        DOM Utilities
+      </a>
+      <a class="ken-nav-item" href="#sec-keyboard">
+        <svg data-icon="adjustments-horizontal"></svg>
+        Keyboard
+      </a>
+      <a class="ken-nav-item" href="#sec-theme">
+        <svg data-icon="sun-moon"></svg>
+        Theme
+      </a>
+
+      <span class="ken-sidebar-label">Extension</span>
+      <a class="ken-nav-item" href="#sec-extend">
+        <svg data-icon="folder-bolt"></svg>
+        geDropdown
+      </a>
+
+      <span class="ken-sidebar-label">API Ref</span>
+      <a class="ken-nav-item" href="#sec-api">
+        <svg data-icon="api-book"></svg>
+        Method Table
+      </a>
+    </nav>
+
+    <!-- Main scrollable area -->
+    <div class="ken-main-scroll">
+      <main class="ken-main">
+
+        <!-- Hero -->
+        <div class="ken-hero">
+          <h1>geUI Showcase</h1>
+          <p>Every method in <code>geUIHelper</code> and <code>icx</code> is exercised here — tabs, accordion, modal, form, toast, keyboard shortcuts, theme, DOM helpers, and the <code>geDropdown</code> extension pattern from the README.</p>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Icons
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-icons">
+          <div class="demo-section-title">
+            <svg data-icon="layout-kanban"></svg>
+            Icon Library — <code>icx.icon(name)</code> + <code>[data-icon]</code>
+          </div>
+
+          <p class="text-muted text-sm">
+            Icons are used two ways. <strong>Declarative:</strong> <code>&lt;svg data-icon="name"&gt;</code> in HTML, hydrated by <code>icx.replace()</code> on boot. <strong>Programmatic:</strong> <code>icx.icon('name')</code> returns an SVG string for injection — the grid below is built entirely via JS.
+          </p>
+
+          <!-- Declarative usage examples -->
+          <div class="demo-row">
+            <span class="text-sm text-muted text-mono">Declarative (data-icon):</span>
+            <svg data-icon="check" class="text-sc"></svg>
+            <svg data-icon="trash" class="text-da"></svg>
+            <svg data-icon="upload" class="text-pr"></svg>
+            <svg data-icon="settings-cog" class="text-muted"></svg>
+            <svg data-icon="user-star" class="text-wr"></svg>
+            <svg data-icon="github"></svg>
+            <svg data-icon="moon"></svg>
+            <svg data-icon="sun"></svg>
+            <svg data-icon="refresh" class="text-pr"></svg>
+          </div>
+
+          <!-- Programmatic icon grid — built by ken.js buildIconGrid() -->
+          <div class="icon-grid" id="iconGrid" aria-label="All available icons"></div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Buttons
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-buttons">
+          <div class="demo-section-title">
+            <svg data-icon="check"></svg>
+            Buttons
+          </div>
+
+          <div class="demo-row">
+            <button class="btn">
+              <svg data-icon="folder"></svg>
+              Default
+            </button>
+            <button class="btn btn-primary">
+              <svg data-icon="check"></svg>
+              Primary
+            </button>
+            <button class="btn btn-success">
+              <svg data-icon="device-floppy"></svg>
+              Success
+            </button>
+            <button class="btn btn-danger">
+              <svg data-icon="trash"></svg>
+              Danger
+            </button>
+            <button class="btn btn-warning">
+              <svg data-icon="adjustments-horizontal"></svg>
+              Warning
+            </button>
+            <button class="btn btn-ghost">
+              <svg data-icon="eye"></svg>
+              Ghost
+            </button>
+            <button class="btn" disabled>
+              <svg data-icon="lock"></svg>
+              Disabled
+            </button>
+          </div>
+
+          <div class="demo-row">
+            <span class="text-sm text-muted text-mono">Icon-only:</span>
+            <button class="btn btn-icon" aria-label="Edit"><svg data-icon="edit"></svg></button>
+            <button class="btn btn-icon btn-primary" aria-label="Upload"><svg data-icon="upload"></svg></button>
+            <button class="btn btn-icon btn-danger" aria-label="Delete"><svg data-icon="trash"></svg></button>
+            <button class="btn btn-icon btn-success" aria-label="Download"><svg data-icon="download"></svg></button>
+            <button class="btn btn-icon btn-ghost" aria-label="Settings"><svg data-icon="settings-cog"></svg></button>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Badges
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-badges">
+          <div class="demo-section-title">
+            <svg data-icon="letter-s-fill"></svg>
+            Badges
+          </div>
+
+          <div class="demo-row">
+            <span class="badge badge-primary">
+              <svg data-icon="activity-heartbeat"></svg>
+              primary
+            </span>
+            <span class="badge badge-success">
+              <svg data-icon="check"></svg>
+              success
+            </span>
+            <span class="badge badge-danger">
+              <svg data-icon="trash"></svg>
+              danger
+            </span>
+            <span class="badge badge-warning">
+              <svg data-icon="adjustments-horizontal"></svg>
+              warning
+            </span>
+            <span class="badge badge-muted">
+              <svg data-icon="lock"></svg>
+              muted
+            </span>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Toast
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-toast">
+          <div class="demo-section-title">
+            <svg data-icon="activity-heartbeat"></svg>
+            Toast — <code>geUIHelper.toast(msg, type, duration)</code>
+          </div>
+
+          <p class="text-muted text-sm">Toasts are appended to a <code>.toast-container</code> (auto-created) and auto-dismiss. Duration defaults to 3000 ms.</p>
+
+          <div class="demo-row">
+            <button class="btn btn-success" id="toastSuccess">
+              <svg data-icon="check"></svg>
+              Success
+            </button>
+            <button class="btn btn-danger" id="toastError">
+              <svg data-icon="x"></svg>
+              Error (5s)
+            </button>
+            <button class="btn btn-primary" id="toastInfo">
+              <svg data-icon="eye"></svg>
+              Info
+            </button>
+            <button class="btn btn-warning" id="toastWarning">
+              <svg data-icon="adjustments-horizontal"></svg>
+              Warning
+            </button>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Tabs
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-tabs">
+          <div class="demo-section-title">
+            <svg data-icon="list"></svg>
+            Tabs — <code>geUIHelper.tabs('.tabmenu')</code>
+          </div>
+
+          <p class="text-muted text-sm">Full ARIA support. Navigate with ← → arrow keys, Home, End.</p>
+
+          <ul class="tabmenu" data-scope="tabContent" role="tablist">
+            <li class="active" data-tab="tab-overview">Overview</li>
+            <li data-tab="tab-usage">Usage</li>
+            <li data-tab="tab-api">API</li>
+            <li data-tab="tab-icons">Icons</li>
+          </ul>
+
+          <div id="tabContent">
+            <div class="tab active tab-panels" id="tab-overview" role="tabpanel">
+              <h4>geUI Overview</h4>
+              <p class="text-muted text-sm">A lightweight, opinionated UI helper for modern vanilla JS. No dependencies, tree-shakeable, full ARIA keyboard navigation built-in.</p>
+              <div class="demo-row mt-md">
+                <span class="badge badge-success"><svg data-icon="check"></svg> Zero deps</span>
+                <span class="badge badge-primary"><svg data-icon="ai-fill"></svg> ES Modules</span>
+                <span class="badge badge-muted"><svg data-icon="adjustments-horizontal"></svg> ARIA ready</span>
+              </div>
+            </div>
+
+            <div class="tab tab-panels" id="tab-usage" hidden role="tabpanel">
+              <h4>Quick Start</h4>
+              <div class="code-block">
+                <pre>import geUIHelper from './geui.js';
+import icx from './ge-icon.js';
+
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  icx.replace();                      // hydrate [data-icon]
+  geUIHelper.tabs('.tabmenu');        // init tabs
+  geUIHelper.accordion('.accordion'); // init accordion
+});</pre>
+              </div>
+            </div>
+
+            <div class="tab tab-panels" id="tab-api" hidden role="tabpanel">
+              <h4>Key APIs</h4>
+              <div class="demo-row">
+                <code class="text-pr text-sm">geUIHelper.el()</code>
+                <code class="text-pr text-sm">geUIHelper.toast()</code>
+                <code class="text-pr text-sm">geUIHelper.modal()</code>
+                <code class="text-pr text-sm">geUIHelper.tabs()</code>
+                <code class="text-pr text-sm">geUIHelper.onKey()</code>
+                <code class="text-pr text-sm">icx.icon()</code>
+                <code class="text-pr text-sm">icx.replace()</code>
+              </div>
+            </div>
+
+            <div class="tab tab-panels" id="tab-icons" hidden role="tabpanel">
+              <h4>Icon Usage</h4>
+              <p class="text-muted text-sm">Two approaches:</p>
+              <div class="code-block">
+                <pre>// Declarative — [data-icon] in HTML, replace() on boot
+&lt;svg data-icon="check"&gt;&lt;/svg&gt;
+
+// Programmatic — inject SVG string from JS
+el.innerHTML = icx.icon('trash', 'my-class');</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Accordion
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-accordion">
+          <div class="demo-section-title">
+            <svg data-icon="list-numbers"></svg>
+            Accordion — <code>geUIHelper.accordion('.accordion')</code>
+          </div>
+
+          <p class="text-muted text-sm">
+            <code>data-single</code> on <code>.accordion</code> collapses siblings on open. Navigate with ↑ ↓ arrow keys, Escape closes.
+          </p>
+
+          <div class="accordion" data-single>
+
+            <div class="accordion-item active">
+              <div class="accordion-header">
+                <span><svg data-icon="folder" style="display:inline-block;vertical-align:middle;margin-right:.5rem;"></svg> What is geUIHelper?</span>
+                <svg data-icon="arrow-right" class="accordion-chevron"></svg>
+              </div>
+              <div class="accordion-content">
+                A static class with zero dependencies providing DOM helpers, theming, toast notifications, modal management, ARIA-compliant tabs and accordions, form validation wiring, and keyboard shortcut binding — all in a single file.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <span><svg data-icon="settings-cog" style="display:inline-block;vertical-align:middle;margin-right:.5rem;"></svg> How does theme init work?</span>
+                <svg data-icon="arrow-right" class="accordion-chevron"></svg>
+              </div>
+              <div class="accordion-content">
+                <code>geUIHelper</code> auto-initialises on import via a static class block. It reads <code>localStorage</code> first, then falls back to <code>prefers-color-scheme</code>. The result is applied as <code>data-theme</code> on <code>&lt;html&gt;</code>.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <span><svg data-icon="ai-agents" style="display:inline-block;vertical-align:middle;margin-right:.5rem;"></svg> Can I extend geUIHelper?</span>
+                <svg data-icon="arrow-right" class="accordion-chevron"></svg>
+              </div>
+              <div class="accordion-content">
+                Yes. Because it's a static class, extending it is just <code>class geMenu extends geUIHelper { ... }</code>. Your subclass inherits all base methods while you add domain-specific helpers. See the geDropdown section below.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <span><svg data-icon="lock-open-2" style="display:inline-block;vertical-align:middle;margin-right:.5rem;"></svg> How do I add icons?</span>
+                <svg data-icon="arrow-right" class="accordion-chevron"></svg>
+              </div>
+              <div class="accordion-content">
+                Open <code>icons.html</code> in a browser — it's a visual SVG editor. Add, rename, or delete icons there, then click <strong>Export icons.js</strong> and replace the file. Never hand-edit <code>icons.js</code> directly.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Modal
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-modal">
+          <div class="demo-section-title">
+            <svg data-icon="eye"></svg>
+            Modal — <code>geUIHelper.modal('open' | 'close' | 'destroy', id)</code>
+          </div>
+
+          <p class="text-muted text-sm">
+            Uses <code>.overlay</code> + <code>.modal</code> from <code>base.css</code>. Focus is trapped while open (Tab / Shift+Tab cycle). Escape closes. Click the backdrop to dismiss.
+          </p>
+
+          <div class="demo-row">
+            <button class="btn btn-primary" id="openDemoModal">
+              <svg data-icon="eye"></svg>
+              Open Modal
+            </button>
+            <button class="btn btn-danger" id="destroyDemoModal">
+              <svg data-icon="trash"></svg>
+              Destroy Modal
+            </button>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Form
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-form">
+          <div class="demo-section-title">
+            <svg data-icon="edit"></svg>
+            Form — <code>geUIHelper.handleForm(formEl, async (data) =&gt; ...)</code>
+          </div>
+
+          <p class="text-muted text-sm">
+            <code>handleForm</code> wires HTML5 validation, calls your async handler on valid submit, shows a success toast and resets the form on <code>{ ok: true }</code>. <code>prepareForm</code> auto-assigns IDs to un-labelled fields.
+          </p>
+
+          <div class="demo-card">
+            <form id="demoForm" name="demo" novalidate>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="field-name">Full name <span class="text-da">*</span></label>
+                  <input type="text" id="field-name" name="name" placeholder="Ada Lovelace" required minlength="2">
+                </div>
+                <div class="form-group">
+                  <label for="field-email">Email address <span class="text-da">*</span></label>
+                  <input type="email" id="field-email" name="email" placeholder="ada@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="field-role">Role</label>
+                  <select id="field-role" name="role">
+                    <option value="">Select a role…</option>
+                    <option value="engineer">Engineer</option>
+                    <option value="designer">Designer</option>
+                    <option value="pm">Product Manager</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="field-url">Website</label>
+                  <input type="url" id="field-url" name="url" placeholder="https://example.com">
+                </div>
+                <div class="form-group full">
+                  <label for="field-bio">Bio</label>
+                  <textarea id="field-bio" name="bio" rows="3" placeholder="Tell us about yourself…"></textarea>
+                </div>
+              </div>
+
+              <div class="demo-row mt-md">
+                <button type="submit" class="btn btn-primary">
+                  <svg data-icon="device-floppy"></svg>
+                  Submit
+                </button>
+                <button type="reset" class="btn">
+                  <svg data-icon="refresh"></svg>
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: DOM Utilities
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-dom">
+          <div class="demo-section-title">
+            <svg data-icon="settings-cog"></svg>
+            DOM Utilities — show / hide / toggle / class
+          </div>
+
+          <p class="text-muted text-sm">
+            All six methods operate on the target paragraph below. Watch it respond.
+          </p>
+
+          <!-- Target element -->
+          <div class="demo-card">
+            <p id="utilTarget" class="text-mono text-sm text-pr">
+              <svg data-icon="activity-heartbeat" style="display:inline-block;vertical-align:middle;"></svg>
+              I am the util target. Manipulate me with the buttons below.
+            </p>
+          </div>
+
+          <div class="demo-row">
+            <button class="btn btn-primary" id="utilShow">
+              <svg data-icon="eye"></svg> show()
+            </button>
+            <button class="btn btn-danger" id="utilHide">
+              <svg data-icon="x"></svg> hide()
+            </button>
+            <button class="btn" id="utilToggle">
+              <svg data-icon="refresh"></svg> toggle()
+            </button>
+            <button class="btn btn-success" id="utilAddClass">
+              <svg data-icon="check"></svg> addClass(text-pr)
+            </button>
+            <button class="btn btn-warning" id="utilRemoveClass">
+              <svg data-icon="trash"></svg> removeClass(text-pr)
+            </button>
+            <button class="btn" id="utilToggleClass">
+              <svg data-icon="adjustments-horizontal"></svg> toggleClass(text-pr)
+            </button>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Keyboard Shortcuts
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-keyboard">
+          <div class="demo-section-title">
+            <svg data-icon="adjustments-horizontal"></svg>
+            Keyboard Shortcuts — <code>geUIHelper.onKey(combo, fn)</code>
+          </div>
+
+          <p class="text-muted text-sm">
+            Supports single keys, modifier combos, and Ctrl+Shift combinations. Registered globally. Escape is wired automatically to close any active modal.
+          </p>
+
+          <div class="shortcut-list" role="table" aria-label="Keyboard shortcuts">
+            <div class="shortcut-row" role="row">
+              <span class="shortcut-desc">Save document (demo)</span>
+              <div class="shortcut-keys">
+                <span class="kbd">Ctrl</span>
+                <span class="text-muted text-sm">+</span>
+                <span class="kbd">S</span>
+              </div>
+            </div>
+            <div class="shortcut-row" role="row">
+              <span class="shortcut-desc">Open search palette</span>
+              <div class="shortcut-keys">
+                <span class="kbd">Ctrl</span>
+                <span class="text-muted text-sm">+</span>
+                <span class="kbd">K</span>
+              </div>
+            </div>
+            <div class="shortcut-row" role="row">
+              <span class="shortcut-desc">Toggle dark / light theme</span>
+              <div class="shortcut-keys">
+                <span class="kbd">Ctrl</span>
+                <span class="text-muted text-sm">+</span>
+                <span class="kbd">Shift</span>
+                <span class="text-muted text-sm">+</span>
+                <span class="kbd">D</span>
+              </div>
+            </div>
+            <div class="shortcut-row" role="row">
+              <span class="shortcut-desc">Fire a test toast</span>
+              <div class="shortcut-keys">
+                <span class="kbd">T</span>
+              </div>
+            </div>
+            <div class="shortcut-row" role="row">
+              <span class="shortcut-desc">Close active modal (built-in)</span>
+              <div class="shortcut-keys">
+                <span class="kbd">Escape</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Theme
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-theme">
+          <div class="demo-section-title">
+            <svg data-icon="sun-moon"></svg>
+            Theme — <code>geUIHelper.setTheme() / getCurrentTheme()</code>
+          </div>
+
+          <p class="text-muted text-sm">
+            Theme is stored in <code>localStorage</code> and applied via <code>data-theme</code> on <code>&lt;html&gt;</code>. Auto-initialises from user preference on first load. Click the sun/moon button in the header, or use <kbd class="kbd">Ctrl+Shift+D</kbd>.
+          </p>
+
+          <div class="demo-row">
+            <button class="btn" id="setDark">
+              <svg data-icon="moon"></svg>
+              setTheme('dark')
+            </button>
+            <button class="btn" id="setLight">
+              <svg data-icon="sun"></svg>
+              setTheme('light')
+            </button>
+            <button class="btn btn-ghost" id="readTheme">
+              <svg data-icon="eye"></svg>
+              getCurrentTheme()
+            </button>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: Extension — geDropdown
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-extend">
+          <div class="demo-section-title">
+            <svg data-icon="folder-bolt"></svg>
+            Extension: geDropdown — extending geUIHelper
+          </div>
+
+          <div class="extend-callout">
+            <svg data-icon="ai-fill"></svg>
+            <div>
+              Per <strong>README-js.md</strong>: <code>class geDropdown extends geUIHelper { ... }</code> — your subclass inherits all base methods. Add <code>static initDropdown()</code> as a domain-specific helper. Then call <code>geDropdown.initDropdown('.ken-dropdown-trigger')</code> in your entry point.
+            </div>
+          </div>
+
+          <div class="demo-row mt-md">
+
+            <div class="ken-dropdown">
+              <button class="btn btn-primary ken-dropdown-trigger">
+                <svg data-icon="folder"></svg>
+                File
+                <svg data-icon="arrow-right"></svg>
+              </button>
+              <div class="ken-dropdown-menu" role="menu">
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="file-text"></svg> New File
+                </div>
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="folder"></svg> Open Folder
+                </div>
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="device-floppy"></svg> Save
+                </div>
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="download"></svg> Export
+                </div>
+              </div>
+            </div>
+
+            <div class="ken-dropdown">
+              <button class="btn ken-dropdown-trigger">
+                <svg data-icon="user"></svg>
+                Account
+                <svg data-icon="arrow-right"></svg>
+              </button>
+              <div class="ken-dropdown-menu" role="menu">
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="user-star"></svg> Profile
+                </div>
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="settings-cog"></svg> Settings
+                </div>
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="lock"></svg> Sign out
+                </div>
+              </div>
+            </div>
+
+            <div class="ken-dropdown">
+              <button class="btn btn-ghost ken-dropdown-trigger">
+                <svg data-icon="adjustments-horizontal"></svg>
+                More
+                <svg data-icon="arrow-right"></svg>
+              </button>
+              <div class="ken-dropdown-menu" role="menu">
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="books"></svg> Docs
+                </div>
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="github"></svg> GitHub
+                </div>
+                <div class="ken-dropdown-item" role="menuitem">
+                  <svg data-icon="activity-heartbeat"></svg> Status
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="code-block mt-md">
+            <pre>// ken.js — extension pattern from README-js.md
+class geDropdown extends geUIHelper {
+  static initDropdown(triggerSelector) {
+    geUIHelper.els(triggerSelector).forEach(trigger =&gt; {
+      const menu = trigger.nextElementSibling;
+      geUIHelper.on(trigger, 'click', e =&gt; {
+        e.stopPropagation();
+        geUIHelper.toggleClass(menu, 'active');
+      });
+    });
+    document.addEventListener('click', () =&gt; {
+      geUIHelper.els('.ken-dropdown-menu.active')
+        .forEach(m =&gt; geUIHelper.removeClass(m, 'active'));
+    });
+  }
+}</pre>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION: API Reference Table
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-api">
+          <div class="demo-section-title">
+            <svg data-icon="api-book"></svg>
+            Full API Reference
+          </div>
+
+          <table class="api-table" aria-label="geUIHelper API">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Returns</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>geUIHelper.el(sel)</code></td>
+                <td class="api-return">Element | null</td>
+                <td class="api-desc">querySelector shorthand</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.els(sel)</code></td>
+                <td class="api-return">Element[]</td>
+                <td class="api-desc">querySelectorAll → spread array</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.show(el)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">Removes inline display:none</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.hide(el)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">Sets style.display = 'none'</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.toggle(el)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">Flips between show / hide</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.addClass(el, cls)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">classList.add with null guard</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.removeClass(el, cls)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">classList.remove with null guard</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.toggleClass(el, cls)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">classList.toggle with null guard</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.on(el, ev, fn)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">addEventListener with null guard</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.onKey(combo, fn)</code></td>
+                <td class="api-return">handler fn</td>
+                <td class="api-desc">'Ctrl+S', 'Escape', 't', etc.</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.setTheme(t)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">'dark' | 'light' → persisted</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.getCurrentTheme()</code></td>
+                <td class="api-return">'dark' | 'light'</td>
+                <td class="api-desc">Reads data-theme attribute</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.toast(msg, type, ms)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">type: success | error | info | warning</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.modal(action, id)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">action: open | close | destroy</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.tabs(sel)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">ARIA tablist + keyboard nav</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.accordion(sel)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">data-single for exclusive mode</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.handleForm(form, fn)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">HTML5 validation + async submit</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.prepareForm(form)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">Auto-assign ids to un-labelled fields</td>
+              </tr>
+              <tr>
+                <td><code>geUIHelper.error(msg, err)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">console.error + error toast</td>
+              </tr>
+              <tr>
+                <td><code>icx.icon(name, classes?)</code></td>
+                <td class="api-return">string</td>
+                <td class="api-desc">SVG HTML string for innerHTML</td>
+              </tr>
+              <tr>
+                <td><code>icx.replace()</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">Hydrate all [data-icon] in DOM</td>
+              </tr>
+              <tr>
+                <td><code>icx.delayreplace(sel)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">Hydrate [data-icon] in a subtree</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+      </main>
+    </div><!-- /ken-main-scroll -->
+  </div><!-- /ken-body -->
+</div><!-- /ken-app -->
+
+<!-- ═══════════════════════════════════════════════
+     MODAL
+     Defined outside .ken-app; geUIHelper.modal('open')
+     moves it into .overlay when triggered.
+═══════════════════════════════════════════════ -->
+<div id="demoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+  <div class="modal-header">
+    <h4 id="demoModalTitle">
+      <svg data-icon="eye"></svg>
+      Demo Modal
+    </h4>
+  </div>
+
+  <p class="text-sm text-muted">
+    This modal was opened via <code>geUIHelper.modal('open', 'demoModal')</code>. Focus is trapped — Tab and Shift+Tab cycle within. Press <strong>Escape</strong> or click the backdrop to close.
+  </p>
+
+  <div class="demo-row">
+    <span class="badge badge-primary">
+      <svg data-icon="lock"></svg>
+      Focus trapped
+    </span>
+    <span class="badge badge-success">
+      <svg data-icon="check"></svg>
+      ARIA ready
+    </span>
+    <span class="badge badge-muted">
+      <svg data-icon="adjustments-horizontal"></svg>
+      Escape closes
+    </span>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn" id="closeDemoModal" aria-label="Close modal">
+      <svg data-icon="x"></svg>
+      Close
+    </button>
+    <button class="btn btn-primary" id="closeDemoModal2">
+      <svg data-icon="check"></svg>
+      Confirm
+    </button>
+  </div>
+</div>
+
+<!-- Theme direct buttons wired here (outside sidebar) -->
+<script>
+  // Handled in ken.js via DOMContentLoaded — these buttons are in #sec-theme
+</script>
+
+<script type="module" src="ken-script.js"></script>
+</body>
+</html>
