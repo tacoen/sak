@@ -3,98 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>骨剣 : Ge Jian - Project Hub</title>
+  <title>搭骨剑 : Ge Jian - Project Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/style.css">
-  <style>
-    /* Inline page styles — scoped, tokens only */
-    @layer pages {
-      .hub-body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: var(--vlg) var(--lg);
-        gap: var(--xlg);
-      }
-      .hub-hero {
-        text-align: center;
-        max-width: 560px;
-      }
-      .hub-hero h1 {
-        font-family: var(--font-mono);
-        font-size: var(--vlg);
-        color: var(--pr);
-        margin-bottom: var(--xs);
-      }
-      .hub-hero p {
-        font-family: var(--font-serif);
-        color: var(--muted);
-        line-height: 1.8;
-      }
-      .hub-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: var(--md);
-        width: 100%;
-        max-width: 760px;
-      }
-      .hub-card {
-        background: var(--bg-subtle);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: var(--lg);
-        display: flex;
-        flex-direction: column;
-        gap: var(--sm);
-        text-decoration: none;
-        color: var(--fg);
-        transition: border-color 0.15s ease, background 0.15s ease;
-      }
-      .hub-card:hover {
-        border-color: var(--pr-border);
-        background: var(--pr-subtle);
-        text-decoration: none;
-        color: var(--fg);
-      }
-      .hub-card-icon {
-        width: var(--xlg);
-        height: var(--xlg);
-        color: var(--pr);
-      }
-      .hub-card h3 {
-        font-family: var(--font-mono);
-        font-size: var(--md);
-        color: var(--pr);
-        margin: 0;
-      }
-      .hub-card p {
-        font-size: var(--sm);
-        color: var(--muted);
-        margin: 0;
-        line-height: 1.5;
-      }
-      .hub-card-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--vxs);
-        padding: var(--vxs) var(--xs);
-        background: var(--bg-inset);
-        border: 1px solid var(--border-muted);
-        border-radius: 4px;
-        font-family: var(--font-mono);
-        font-size: var(--sm);
-        color: var(--muted);
-        width: fit-content;
-      }
-      .hub-footer {
-        font-family: var(--font-mono);
-        font-size: var(--sm);
-        color: var(--muted);
-        text-align: center;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="index-style.css">
 </head>
 <body>
 
@@ -102,68 +16,64 @@
 
   <!-- Hero -->
   <div class="hub-hero">
-    <h1 class='zhi'>骨 剣</h1>
+    <h1 class='zhi'>搭骨剑</h1>
     <p>A design system is not decoration. It is the bone structure beneath everything — invisible when done right, catastrophic when missing.</p>
   </div>
 
   <!-- Card grid -->
   <div class="hub-grid">
   
-    <a class="hub-card" href="ge.html">
+    <div class="hub-card s1">
 	  <h1 class='zhi'>骨</h1>
 		<h3>Ge - Theme Palete</h3>
 		<p>A design system is not decoration. It is the bone structure beneath everything — invisible when done right, catastrophic when missing.</p>
-      <span class="hub-card-tag">ge.html</span>
-    </a>
+      
+	<div class='flex gap-2'>
+	  <a class="hub-card-tag" href='ge.html'>html</a>
+	  <a class="hub-card-tag" href='src/README.md'>md</a>
+	</div>
 	
-    <a class="hub-card" href="ken.html">
-	  <h1 class='zhi'>剣</h1>
-      <h3>Ken — Showcase</h3>
+    </div>
+	
+    <div class="hub-card s2">
+	  <h1 class='zhi'>剑</h1>
+      <h3>Showcase</h3>
       <p>Full demonstration of every <code>geUIHelper</code> and <code>icx</code> API: tabs, accordion, modal, form, toast, keyboard shortcuts, theme, DOM helpers, and the extension pattern.</p>
-      <span class="hub-card-tag">ken.html</span>
-    </a>
+      <a class="hub-card-tag" href='ken.html'>html</a>
+    </div>
 
+<div class="hub-card s3">
+  <h1 class='zhi'>搭</h1>
+  <h3>Builder</h3>
+  <p>Visual component builder for non-programmers. Pick a component, configure it live, and copy the ready-to-paste HTML — no code knowledge needed.</p>
+  <a class="hub-card-tag" href="da.html">html</a>
+</div>
 
-
-    <a class="hub-card" href="src/js/icons.html">
-	  <h1 class='zhi'>圖</h1>
+    <div class="hub-card s4">
+	  <h1 class='zhi'>件</h1>
       <h3>Icon(s)</h3>
       <p>Visual SVG icon library. Add, rename, preview, and export icons. Changes are saved to <code>localStorage</code>; click <strong>Export icons.js</strong> when done.</p>
-      <span class="hub-card-tag">icons.html</span>
-    </a>
-
-    <a class="hub-card" href="src/README.md">
-      <svg class="hub-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
-        <path d="M17 21h-10a2 2 0 0 1-2-2v-14a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"/>
-        <path d="M9 9l1 0"/><path d="M9 13l6 0"/><path d="M9 17l6 0"/>
-      </svg>
-      <h3>README</h3>
-      <p>Project structure, CSS layer architecture, generation checklist, and HTML/JS/CSS rules for building on top of the Ge design system.</p>
-      <span class="hub-card-tag">README.md</span>
-    </a>
-
-    <a class="hub-card" href="src/js/README-js.md">
+      <a class="hub-card-tag"  href="src/js/icons.html">html</a>
+    </div>
+	
+    <div class="hub-card ref s5">
       <svg class="hub-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 1.006-.5"/>
         <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/>
         <path d="M3 6v13"/><path d="M12 6v13"/><path d="M21 6v6"/>
       </svg>
-      <h3>JS Reference</h3>
+      <h3>References</h3>
       <p>All <code>geUIHelper</code> methods, the extension pattern (<code>class geMenu extends geUIHelper</code>), and keyboard shortcut examples.</p>
-      <span class="hub-card-tag">README-js.md</span>
-    </a>
+		<div class='flex gap-2'>
+		<a class="hub-card-tag" href='src/README.md'>prompt.md</a>		
+		<a class="hub-card-tag" href="src/js/README-js.md">js.md</a>
+		<a class="hub-card-tag" href="src/css/README-css.md">css.md</a>
+		</div>
+    </div>
+	
 
-    <a class="hub-card" href="src/css/README-css.md">
-      <svg class="hub-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 1.006-.5"/>
-        <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/>
-        <path d="M3 6v13"/><path d="M12 6v13"/><path d="M21 6v6"/>
-      </svg>
-      <h3>JS Reference</h3>
-      <p>All <code>geUIHelper</code> methods, the extension pattern (<code>class geMenu extends geUIHelper</code>), and keyboard shortcut examples.</p>
-      <span class="hub-card-tag">README-css.md</span>
-    </a>
+
+
 	
   </div>
 

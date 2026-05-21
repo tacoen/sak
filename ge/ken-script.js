@@ -260,6 +260,25 @@ function initDomUtils() {
 }
 
 // ─────────────────────────────────────────────────
+//  Copy demo (geUIHelper.copy)
+// ─────────────────────────────────────────────────
+function initCopy() {
+  try {
+    geUIHelper.copy(
+      geUIHelper.el('#copyTextareaBtn'),
+      geUIHelper.el('#copy-textarea')
+    );
+    geUIHelper.copy(
+      geUIHelper.el('#copyPreBtn'),
+      geUIHelper.el('#copy-pre'),
+      { success: '✓ Copied!', duration: 2000 }
+    );
+  } catch (e) {
+    geUIHelper.error('Copy init failed', e);
+  }
+}
+
+// ─────────────────────────────────────────────────
 //  geDropdown (extension demo)
 // ─────────────────────────────────────────────────
 function initDropdown() {
@@ -306,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeSection();
     initKeyboardShortcuts();
     initDomUtils();
+    initCopy();
     initDropdown();
     initSidebarNav();
 

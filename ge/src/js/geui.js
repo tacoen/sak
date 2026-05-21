@@ -15,6 +15,45 @@ export default class geUIHelper {
 
   static on(el, ev, fn, opt) { el?.addEventListener(ev, fn, opt); }
 
+  // ==================== COPY ====================
+  // Wire a copy button to a textarea or pre element. No clipboard API — uses execCommand.
+  // Usage: geUIHelper.copy(btnEl, targetEl)
+  // Usage: geUIHelper.copy(btnEl, targetEl, { success: 'Copied!', duration: 1500 })
+  static copy(btn, target, options = {}) {
+    if (!btn || !target) return;
+    const { success = 'Copied!', duration = 1500 } = options;
+    const label = btn.textContent;
+
+    geUIHelper.on(btn, 'click', () => {
+      try {
+        if (target.tagName === 'TEXTAREA') {
+          target.select();
+          target.setSelectionRange(0, 99999);
+        } else {
+          const sel = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(target);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+
+        const ok = document.execCommand('copy');
+        window.getSelection()?.removeAllRanges();
+
+        if (ok) {
+          btn.textContent = success;
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.textContent = label;
+            btn.disabled = false;
+          }, duration);
+        }
+      } catch (e) {
+        geUIHelper.error('Copy failed', e);
+      }
+    });
+  }
+
   // ==================== EASY KEYBOARD SHORTCUTS ====================
   static onKey(keyCombo, callback, options = {}) {
     const { target = document, preventDefault = true } = options;

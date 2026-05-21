@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>打 da — geUI Build Reference</title>
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="da-style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     APP SHELL
+═══════════════════════════════════════════════ -->
+<div class="da-app">
+
+  <!-- Header -->
+  <header class="da-header">
+    <div class="da-header-left">
+      <span class="da-brand">打</span>
+      <span class="da-brand-sub">geUI Build Reference</span>
+    </div>
+    <div class="da-header-right">
+      <span class="badge badge-muted">
+        <svg data-icon="list-numbers"></svg>
+        11 components
+      </span>
+      <button class="btn btn-ghost btn-icon" id="themeToggle" aria-label="Toggle theme"></button>
+    </div>
+  </header>
+
+  <!-- Body -->
+  <div class="da-body">
+
+    <!-- Sidebar -->
+    <nav class="da-sidebar" aria-label="Component navigation">
+      <span class="da-sidebar-label">Interactive</span>
+      <a class="da-nav-item" href="#sec-accordion">
+        <svg data-icon="list-numbers"></svg>
+        Accordion
+      </a>
+      <a class="da-nav-item" href="#sec-tabs">
+        <svg data-icon="list"></svg>
+        Tabs
+      </a>
+      <a class="da-nav-item" href="#sec-modal">
+        <svg data-icon="eye"></svg>
+        Modal
+      </a>
+      <a class="da-nav-item" href="#sec-toast">
+        <svg data-icon="activity-heartbeat"></svg>
+        Toast
+      </a>
+
+      <span class="da-sidebar-label">Navigation</span>
+      <a class="da-nav-item" href="#sec-dropdown">
+        <svg data-icon="folder"></svg>
+        Dropdown Menu
+      </a>
+      <a class="da-nav-item" href="#sec-vmenu">
+        <svg data-icon="layout-kanban"></svg>
+        Vertical Menu
+      </a>
+      <a class="da-nav-item" href="#sec-context">
+        <svg data-icon="adjustments-horizontal"></svg>
+        Context Menu
+      </a>
+
+      <span class="da-sidebar-label">Display</span>
+      <a class="da-nav-item" href="#sec-buttons">
+        <svg data-icon="check"></svg>
+        Buttons
+      </a>
+      <a class="da-nav-item" href="#sec-badges">
+        <svg data-icon="letter-s-fill"></svg>
+        Badges
+      </a>
+      <a class="da-nav-item" href="#sec-form">
+        <svg data-icon="edit"></svg>
+        Form
+      </a>
+      <a class="da-nav-item" href="#sec-cards">
+        <svg data-icon="notebook"></svg>
+        Cards
+      </a>
+    </nav>
+
+    <!-- Main scrollable area -->
+    <div class="da-scroll">
+      <main class="da-main">
+
+        <!-- Hero -->
+        <div class="da-hero">
+          <h1>Build Reference</h1>
+          <p>Click any section to expand it. Each shows a live demo you can interact with, plus the exact HTML to copy into your project.</p>
+          <div class="da-hero-tags">
+            <span class="badge badge-primary"><svg data-icon="activity-heartbeat"></svg> Live demos</span>
+            <span class="badge badge-success"><svg data-icon="check"></svg> Copy-ready code</span>
+            <span class="badge badge-muted"><svg data-icon="lock"></svg> No dependencies</span>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             OUTER ACCORDION — 11 component sections
+             Uses .da-acc-header (NOT .accordion-header)
+             Handled by initDaAccordion() in da-script.js
+             Avoids event conflict with inner .demo-accordion
+        ═══════════════════════════════════════════ -->
+        <div class="da-accordion">
+
+          <!-- ─── 1. ACCORDION ─── -->
+          <div class="accordion-item" id="sec-accordion">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="list-numbers"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Accordion</span>
+                <span class="da-acc-desc">Collapsible sections — click to expand, click again to collapse</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Wrap items in <code>.accordion</code>. Add <code>data-single</code> to close others when one opens.
+                Each item needs an <code>.accordion-header</code> and an <code>.accordion-content</code>.
+              </p>
+
+              <div class="da-demo">
+                <div class="demo-accordion" data-single>
+                  <div class="accordion-item active">
+                    <div class="accordion-header">
+                      <span><svg data-icon="folder" style="display:inline-block;vertical-align:middle;margin-right:.4rem;width:1rem;height:1rem;"></svg>What is this component?</span>
+                      <svg data-icon="arrow-right" class="demo-acc-chevron"></svg>
+                    </div>
+                    <div class="accordion-content">
+                      An accordion hides long content behind a clickable header. Great for FAQs, settings panels, and detail sections.
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <div class="accordion-header">
+                      <span><svg data-icon="settings-cog" style="display:inline-block;vertical-align:middle;margin-right:.4rem;width:1rem;height:1rem;"></svg>How do I add more items?</span>
+                      <svg data-icon="arrow-right" class="demo-acc-chevron"></svg>
+                    </div>
+                    <div class="accordion-content">
+                      Copy the <code>.accordion-item</code> block and paste it inside the same <code>.accordion</code> wrapper. Each item is fully independent.
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <div class="accordion-header">
+                      <span><svg data-icon="lock-open-2" style="display:inline-block;vertical-align:middle;margin-right:.4rem;width:1rem;height:1rem;"></svg>What does data-single do?</span>
+                      <svg data-icon="arrow-right" class="demo-acc-chevron"></svg>
+                    </div>
+                    <div class="accordion-content">
+                      <code>data-single</code> means only one item can be open at a time — opening a new one closes the previous one automatically.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML + JS</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;div class="accordion" data-single&gt;
+
+  &lt;div class="accordion-item"&gt;
+    &lt;div class="accordion-header"&gt;
+      Section Title
+      &lt;svg data-icon="arrow-right" class="accordion-chevron"&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div class="accordion-content"&gt;
+      Your content here.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- repeat .accordion-item for more sections --&gt;
+
+&lt;/div&gt;
+
+&lt;!-- JS --&gt;
+geUIHelper.accordion('.accordion');</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 2. TABS ─── -->
+          <div class="accordion-item" id="sec-tabs">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="list"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Tabs</span>
+                <span class="da-acc-desc">Switch between content panels using a tab bar</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Give the <code>.tabmenu</code> list a <code>data-scope</code> matching the panel wrapper's <code>id</code>.
+                Each <code>&lt;li&gt;</code> gets a <code>data-tab</code> matching its panel's <code>id</code>. Arrow keys navigate — built in.
+              </p>
+
+              <div class="da-demo">
+                <ul class="tabmenu" data-scope="demoTabContent">
+                  <li class="active" data-tab="demo-tab-a">Overview</li>
+                  <li data-tab="demo-tab-b">Details</li>
+                  <li data-tab="demo-tab-c">Settings</li>
+                </ul>
+                <div id="demoTabContent">
+                  <div class="tab active tab-panels" id="demo-tab-a">
+                    <strong class="text-pr text-mono">Overview panel</strong>
+                    <p style="margin:.5rem 0 0;font-size:var(--sm);color:var(--muted);">Click a tab or use ← → arrow keys. Only one panel shows at a time.</p>
+                  </div>
+                  <div class="tab tab-panels" id="demo-tab-b" hidden>
+                    <strong class="text-sc text-mono">Details panel</strong>
+                    <p style="margin:.5rem 0 0;font-size:var(--sm);color:var(--muted);">The active tab gets a coloured underline indicator. The rest are hidden.</p>
+                  </div>
+                  <div class="tab tab-panels" id="demo-tab-c" hidden>
+                    <strong class="text-wr text-mono">Settings panel</strong>
+                    <p style="margin:.5rem 0 0;font-size:var(--sm);color:var(--muted);">Each <code>data-tab</code> value must match the matching panel's <code>id</code> exactly.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML + JS</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;!-- Tab bar: data-scope = panel wrapper id --&gt;
+&lt;ul class="tabmenu" data-scope="myContent"&gt;
+  &lt;li class="active" data-tab="tab-one"&gt;First&lt;/li&gt;
+  &lt;li data-tab="tab-two"&gt;Second&lt;/li&gt;
+  &lt;li data-tab="tab-three"&gt;Third&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Panel wrapper: id = data-scope value --&gt;
+&lt;div id="myContent"&gt;
+  &lt;div class="tab active tab-panels" id="tab-one"&gt;First content&lt;/div&gt;
+  &lt;div class="tab tab-panels" id="tab-two" hidden&gt;Second content&lt;/div&gt;
+  &lt;div class="tab tab-panels" id="tab-three" hidden&gt;Third content&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- JS --&gt;
+geUIHelper.tabs('.tabmenu');</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 3. MODAL ─── -->
+          <div class="accordion-item" id="sec-modal">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="eye"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Modal</span>
+                <span class="da-acc-desc">Focused dialog overlay — focus trapped, Escape or backdrop to close</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Place the <code>.modal</code> <strong>outside</strong> the app shell, just before <code>&lt;/body&gt;</code>.
+                Open it with <code>geUIHelper.modal('open', 'myModal')</code> — the overlay is created automatically.
+              </p>
+
+              <div class="da-demo">
+                <div class="da-demo-row">
+                  <button class="btn btn-primary" id="openInfoModal">
+                    <svg data-icon="eye"></svg>
+                    Open Info Modal
+                  </button>
+                  <button class="btn btn-danger" id="openDangerModal">
+                    <svg data-icon="trash"></svg>
+                    Delete Confirm
+                  </button>
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML + JS</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;!-- Place OUTSIDE the app div, before &lt;/body&gt; --&gt;
+&lt;div id="myModal" class="modal" role="dialog" aria-modal="true"&gt;
+  &lt;div class="modal-head"&gt;
+    &lt;h4&gt;Modal Title&lt;/h4&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Your content here.&lt;/p&gt;
+  &lt;div class="modal-foot"&gt;
+    &lt;button class="btn" id="cancelBtn"&gt;Cancel&lt;/button&gt;
+    &lt;button class="btn btn-primary" id="confirmBtn"&gt;Confirm&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- JS --&gt;
+geUIHelper.modal('open',  'myModal');
+geUIHelper.modal('close', 'myModal');</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 4. TOAST ─── -->
+          <div class="accordion-item" id="sec-toast">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="activity-heartbeat"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Toast</span>
+                <span class="da-acc-desc">Auto-dismissing notification messages — no HTML required</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                One line of JS — no HTML needed. Types: <code>success</code>, <code>error</code>, <code>info</code>, <code>warning</code>.
+                Third argument is duration in milliseconds (default: 3000 = 3 seconds).
+              </p>
+
+              <div class="da-demo">
+                <div class="da-demo-row">
+                  <button class="btn btn-success" id="toastSuccess">
+                    <svg data-icon="check"></svg>
+                    Success
+                  </button>
+                  <button class="btn btn-danger" id="toastError">
+                    <svg data-icon="x"></svg>
+                    Error (5s)
+                  </button>
+                  <button class="btn btn-primary" id="toastInfo">
+                    <svg data-icon="eye"></svg>
+                    Info
+                  </button>
+                  <button class="btn btn-warning" id="toastWarning">
+                    <svg data-icon="adjustments-horizontal"></svg>
+                    Warning
+                  </button>
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">JS only — no HTML needed</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>geUIHelper.toast('Saved successfully!', 'success');
+geUIHelper.toast('Something went wrong.', 'error');
+geUIHelper.toast('Here is some information.', 'info');
+geUIHelper.toast('This cannot be undone.', 'warning');
+
+// Custom duration (milliseconds):
+geUIHelper.toast('Stays 5 seconds.', 'error', 5000);</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 5. DROPDOWN ─── -->
+          <div class="accordion-item" id="sec-dropdown">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="folder"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Dropdown Menu</span>
+                <span class="da-acc-desc">Button that reveals a floating list of actions on click</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Wrap a trigger button and a <code>.dd-menu</code> inside <code>.dd-wrap</code>.
+                Add <code>.dd-menu-right</code> to align the menu to the right edge.
+                Clicking anywhere outside closes all open menus.
+              </p>
+
+              <div class="da-demo">
+                <div class="da-demo-row">
+
+                  <div class="dd-wrap">
+                    <button class="btn btn-primary dd-trigger">
+                      <svg data-icon="folder"></svg>
+                      File
+                      <svg data-icon="arrow-right"></svg>
+                    </button>
+                    <div class="dd-menu" role="menu">
+                      <div class="dd-item" role="menuitem"><svg data-icon="file-text"></svg> New File</div>
+                      <div class="dd-item" role="menuitem"><svg data-icon="folder"></svg> Open Folder</div>
+                      <div class="dd-item" role="menuitem"><svg data-icon="device-floppy"></svg> Save</div>
+                      <hr class="dd-divider">
+                      <div class="dd-item dd-item-danger" role="menuitem"><svg data-icon="trash"></svg> Delete</div>
+                    </div>
+                  </div>
+
+                  <div class="dd-wrap">
+                    <button class="btn dd-trigger">
+                      <svg data-icon="user"></svg>
+                      Account
+                      <svg data-icon="arrow-right"></svg>
+                    </button>
+                    <div class="dd-menu" role="menu">
+                      <div class="dd-item" role="menuitem"><svg data-icon="user-star"></svg> Profile</div>
+                      <div class="dd-item" role="menuitem"><svg data-icon="settings-cog"></svg> Settings</div>
+                      <hr class="dd-divider">
+                      <div class="dd-item" role="menuitem"><svg data-icon="lock"></svg> Sign out</div>
+                    </div>
+                  </div>
+
+                  <div class="dd-wrap">
+                    <button class="btn btn-ghost dd-trigger">
+                      <svg data-icon="adjustments-horizontal"></svg>
+                      More
+                      <svg data-icon="arrow-right"></svg>
+                    </button>
+                    <div class="dd-menu dd-menu-right" role="menu">
+                      <div class="dd-item" role="menuitem"><svg data-icon="books"></svg> Docs</div>
+                      <div class="dd-item" role="menuitem"><svg data-icon="github"></svg> GitHub</div>
+                      <div class="dd-item" role="menuitem"><svg data-icon="activity-heartbeat"></svg> Status</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML + JS</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;div class="dd-wrap"&gt;
+  &lt;button class="btn btn-primary dd-trigger"&gt;Open Menu&lt;/button&gt;
+  &lt;div class="dd-menu" role="menu"&gt;
+    &lt;div class="dd-item"&gt;Option 1&lt;/div&gt;
+    &lt;div class="dd-item"&gt;Option 2&lt;/div&gt;
+    &lt;hr class="dd-divider"&gt;
+    &lt;div class="dd-item dd-item-danger"&gt;Delete&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Right-aligned: add .dd-menu-right to the menu --&gt;
+
+&lt;!-- JS — geDropdown extends geUIHelper --&gt;
+class geDropdown extends geUIHelper {
+  static init(sel) {
+    geUIHelper.els(sel).forEach(trigger =&gt; {
+      const menu = trigger.nextElementSibling;
+      geUIHelper.on(trigger, 'click', e =&gt; {
+        e.stopPropagation();
+        geUIHelper.els('.dd-menu.active').forEach(m =&gt; {
+          if (m !== menu) geUIHelper.removeClass(m, 'active');
+        });
+        geUIHelper.toggleClass(menu, 'active');
+      });
+    });
+    document.addEventListener('click', () =&gt;
+      geUIHelper.els('.dd-menu.active').forEach(m =&gt;
+        geUIHelper.removeClass(m, 'active')));
+  }
+}
+geDropdown.init('.dd-trigger');</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 6. VERTICAL MENU ─── -->
+          <div class="accordion-item" id="sec-vmenu">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="layout-kanban"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Vertical Menu</span>
+                <span class="da-acc-desc">Sidebar navigation with groups, active state, and danger variant</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Use <code>.vmenu</code> as wrapper, <code>.vmenu-label</code> for group headings, <code>a.vmenu-item</code> for links.
+                Add <code>.active</code> to highlight the current page. Add <code>.vmenu-item-danger</code> for destructive actions.
+              </p>
+
+              <div class="da-demo">
+                <div class="da-demo-row">
+                  <nav class="vmenu" aria-label="Demo sidebar">
+                    <span class="vmenu-label">Pages</span>
+                    <a class="vmenu-item active" href="#">
+                      <svg data-icon="layout-kanban"></svg> Dashboard
+                    </a>
+                    <a class="vmenu-item" href="#">
+                      <svg data-icon="notebook"></svg> Notes
+                    </a>
+                    <a class="vmenu-item" href="#">
+                      <svg data-icon="books"></svg> Library
+                    </a>
+                    <span class="vmenu-label">Account</span>
+                    <a class="vmenu-item" href="#">
+                      <svg data-icon="user"></svg> Profile
+                    </a>
+                    <a class="vmenu-item" href="#">
+                      <svg data-icon="settings-cog"></svg> Settings
+                    </a>
+                    <a class="vmenu-item vmenu-item-danger" href="#">
+                      <svg data-icon="trash"></svg> Delete Account
+                    </a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML — no JS required</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;nav class="vmenu"&gt;
+
+  &lt;span class="vmenu-label"&gt;Main&lt;/span&gt;
+
+  &lt;a class="vmenu-item" href="/page"&gt;
+    &lt;svg data-icon="layout-kanban"&gt;&lt;/svg&gt;
+    Dashboard
+  &lt;/a&gt;
+
+  &lt;!-- Active / current page --&gt;
+  &lt;a class="vmenu-item active" href="/notes"&gt;
+    &lt;svg data-icon="notebook"&gt;&lt;/svg&gt;
+    Notes
+  &lt;/a&gt;
+
+  &lt;!-- Danger variant --&gt;
+  &lt;a class="vmenu-item vmenu-item-danger" href="/delete"&gt;
+    &lt;svg data-icon="trash"&gt;&lt;/svg&gt;
+    Delete
+  &lt;/a&gt;
+
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 7. CONTEXT MENU ─── -->
+          <div class="accordion-item" id="sec-context">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="adjustments-horizontal"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Context Menu</span>
+                <span class="da-acc-desc">Right-click menu that appears at the cursor position</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Place <code>#ctxMenu</code> outside the app shell (it uses <code>position: fixed</code>).
+                Listen for <code>contextmenu</code> on your target, set <code>left</code>/<code>top</code> to the cursor coords, add <code>.active</code>.
+              </p>
+
+              <div class="da-demo">
+                <div id="ctxTarget" class="ctx-target">
+                  <svg data-icon="adjustments-horizontal"></svg>
+                  Right-click anywhere in this box
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML + JS</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;!-- Target element (anything) --&gt;
+&lt;div id="myTarget"&gt;Right-click me&lt;/div&gt;
+
+&lt;!-- Menu: outside app div, position:fixed via CSS --&gt;
+&lt;div id="myCtxMenu" class="ctx-menu" role="menu"&gt;
+  &lt;div class="ctx-item"&gt;&lt;svg data-icon="edit"&gt;&lt;/svg&gt; Edit&lt;/div&gt;
+  &lt;div class="ctx-item"&gt;&lt;svg data-icon="download"&gt;&lt;/svg&gt; Copy&lt;/div&gt;
+  &lt;hr class="ctx-divider"&gt;
+  &lt;div class="ctx-item ctx-item-danger"&gt;&lt;svg data-icon="trash"&gt;&lt;/svg&gt; Delete&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- JS --&gt;
+const target = geUIHelper.el('#myTarget');
+const menu   = geUIHelper.el('#myCtxMenu');
+
+geUIHelper.on(target, 'contextmenu', e =&gt; {
+  e.preventDefault();
+  menu.style.left = e.clientX + 'px';
+  menu.style.top  = e.clientY + 'px';
+  geUIHelper.addClass(menu, 'active');
+});
+
+document.addEventListener('click', () =&gt;
+  geUIHelper.removeClass(menu, 'active'));</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 8. BUTTONS ─── -->
+          <div class="accordion-item" id="sec-buttons">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="check"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Buttons</span>
+                <span class="da-acc-desc">All variants — default, primary, success, danger, warning, ghost, icon-only</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Start with <code>class="btn"</code> and add one modifier.
+                For icon-only buttons, add <code>btn-icon</code> and an <code>aria-label</code> describing the action.
+              </p>
+
+              <div class="da-demo">
+                <div class="da-demo-row">
+                  <button class="btn"><svg data-icon="folder"></svg> Default</button>
+                  <button class="btn btn-primary"><svg data-icon="check"></svg> Primary</button>
+                  <button class="btn btn-success"><svg data-icon="device-floppy"></svg> Success</button>
+                  <button class="btn btn-danger"><svg data-icon="trash"></svg> Danger</button>
+                  <button class="btn btn-warning"><svg data-icon="adjustments-horizontal"></svg> Warning</button>
+                  <button class="btn btn-ghost"><svg data-icon="eye"></svg> Ghost</button>
+                  <button class="btn" disabled><svg data-icon="lock"></svg> Disabled</button>
+                </div>
+                <div class="da-demo-row mt-sm">
+                  <span class="da-dim">Icon-only:</span>
+                  <button class="btn btn-icon" aria-label="Edit"><svg data-icon="edit"></svg></button>
+                  <button class="btn btn-icon btn-primary" aria-label="Upload"><svg data-icon="upload"></svg></button>
+                  <button class="btn btn-icon btn-danger" aria-label="Delete"><svg data-icon="trash"></svg></button>
+                  <button class="btn btn-icon btn-success" aria-label="Download"><svg data-icon="download"></svg></button>
+                  <button class="btn btn-icon btn-ghost" aria-label="Settings"><svg data-icon="settings-cog"></svg></button>
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML — no JS required</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;button class="btn"&gt;Default&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;Ghost&lt;/button&gt;
+&lt;button class="btn" disabled&gt;Disabled&lt;/button&gt;
+
+&lt;!-- With icon --&gt;
+&lt;button class="btn btn-primary"&gt;
+  &lt;svg data-icon="check"&gt;&lt;/svg&gt;
+  Save
+&lt;/button&gt;
+
+&lt;!-- Icon only: add btn-icon + aria-label --&gt;
+&lt;button class="btn btn-icon btn-danger" aria-label="Delete"&gt;
+  &lt;svg data-icon="trash"&gt;&lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 9. BADGES ─── -->
+          <div class="accordion-item" id="sec-badges">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="letter-s-fill"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Badges</span>
+                <span class="da-acc-desc">Small labels for status, categories, and tags</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Use <code>&lt;span class="badge badge-*"&gt;</code>. Icons inside badges are optional.
+                Variants: <code>primary</code>, <code>success</code>, <code>danger</code>, <code>warning</code>, <code>muted</code>.
+              </p>
+
+              <div class="da-demo">
+                <div class="da-demo-row">
+                  <span class="badge badge-primary"><svg data-icon="activity-heartbeat"></svg> primary</span>
+                  <span class="badge badge-success"><svg data-icon="check"></svg> success</span>
+                  <span class="badge badge-danger"><svg data-icon="x"></svg> danger</span>
+                  <span class="badge badge-warning"><svg data-icon="adjustments-horizontal"></svg> warning</span>
+                  <span class="badge badge-muted"><svg data-icon="lock"></svg> muted</span>
+                </div>
+                <div class="da-demo-row mt-sm">
+                  <span class="da-dim">Text-only:</span>
+                  <span class="badge badge-primary">v2.1.0</span>
+                  <span class="badge badge-success">published</span>
+                  <span class="badge badge-danger">deleted</span>
+                  <span class="badge badge-warning">draft</span>
+                  <span class="badge badge-muted">archived</span>
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML — no JS required</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;span class="badge badge-primary"&gt;
+  &lt;svg data-icon="check"&gt;&lt;/svg&gt;
+  primary
+&lt;/span&gt;
+
+&lt;span class="badge badge-success"&gt;success&lt;/span&gt;
+&lt;span class="badge badge-danger"&gt;danger&lt;/span&gt;
+&lt;span class="badge badge-warning"&gt;warning&lt;/span&gt;
+&lt;span class="badge badge-muted"&gt;muted&lt;/span&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 10. FORM ─── -->
+          <div class="accordion-item" id="sec-form">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="edit"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Form</span>
+                <span class="da-acc-desc">Validated inputs — name, email, select, textarea, submit</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                Wrap each label+input pair in <code>.da-form-group</code>. Call <code>geUIHelper.handleForm()</code> with an async function.
+                Return <code>{ ok: true }</code> to show the success toast and reset automatically.
+              </p>
+
+              <div class="da-demo">
+                <form id="daContactForm" class="da-form" novalidate>
+                  <div class="da-form-grid">
+                    <div class="da-form-group">
+                      <label for="da-name">Full name <span class="text-da">*</span></label>
+                      <input type="text" id="da-name" name="name" placeholder="Ada Lovelace" required minlength="2">
+                    </div>
+                    <div class="da-form-group">
+                      <label for="da-email">Email <span class="text-da">*</span></label>
+                      <input type="email" id="da-email" name="email" placeholder="ada@example.com" required>
+                    </div>
+                    <div class="da-form-group">
+                      <label for="da-role">Role</label>
+                      <select id="da-role" name="role">
+                        <option value="">Select a role…</option>
+                        <option value="engineer">Engineer</option>
+                        <option value="designer">Designer</option>
+                        <option value="pm">Product Manager</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div class="da-form-group full">
+                      <label for="da-bio">Message</label>
+                      <textarea id="da-bio" name="bio" rows="3" placeholder="Tell us anything…"></textarea>
+                    </div>
+                  </div>
+                  <div class="da-form-actions">
+                    <button type="submit" class="btn btn-primary">
+                      <svg data-icon="device-floppy"></svg>
+                      Submit
+                    </button>
+                    <button type="reset" class="btn">
+                      <svg data-icon="refresh"></svg>
+                      Reset
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML + JS</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;form id="myForm" novalidate&gt;
+  &lt;div class="da-form-group"&gt;
+    &lt;label for="f-name"&gt;Name *&lt;/label&gt;
+    &lt;input type="text" id="f-name" name="name" required&gt;
+  &lt;/div&gt;
+  &lt;div class="da-form-group"&gt;
+    &lt;label for="f-email"&gt;Email *&lt;/label&gt;
+    &lt;input type="email" id="f-email" name="email" required&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- JS --&gt;
+const form = geUIHelper.el('#myForm');
+geUIHelper.handleForm(form, async (data) =&gt; {
+  console.log('Submitted:', data);
+  // your save logic here…
+  return { ok: true }; // success toast + form reset
+});</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 11. CARDS ─── -->
+          <div class="accordion-item" id="sec-cards">
+            <div class="da-acc-header" tabindex="0" role="button" aria-expanded="false">
+              <div class="da-acc-icon"><svg data-icon="notebook"></svg></div>
+              <div class="da-acc-texts">
+                <span class="da-acc-title">Cards</span>
+                <span class="da-acc-desc">Content containers with optional header, body, and footer</span>
+              </div>
+              <svg data-icon="arrow-right" class="da-acc-chevron"></svg>
+            </div>
+            <div class="accordion-content da-acc-content">
+              <p class="da-hint">
+                A card has three optional zones: <code>.da-card-head</code>, <code>.da-card-body</code>, <code>.da-card-foot</code>.
+                Add a variant class on the card itself for colour: <code>da-card-primary</code>, <code>da-card-success</code>, <code>da-card-danger</code>.
+              </p>
+
+              <div class="da-demo">
+                <div class="da-cards-grid">
+                  <div class="da-card">
+                    <div class="da-card-head"><svg data-icon="notebook" style="width:1rem;height:1rem;"></svg> Default</div>
+                    <div class="da-card-body">Neutral card for general content or information blocks with no status.</div>
+                    <div class="da-card-foot">
+                      <button class="btn btn-ghost" style="font-size:var(--sm);">View</button>
+                    </div>
+                  </div>
+                  <div class="da-card da-card-success">
+                    <div class="da-card-head"><svg data-icon="check" style="width:1rem;height:1rem;"></svg> Success</div>
+                    <div class="da-card-body">Use for completed items, confirmations, or positive status indicators.</div>
+                    <div class="da-card-foot">
+                      <button class="btn btn-success" style="font-size:var(--sm);">Done</button>
+                    </div>
+                  </div>
+                  <div class="da-card da-card-danger">
+                    <div class="da-card-head"><svg data-icon="trash" style="width:1rem;height:1rem;"></svg> Danger</div>
+                    <div class="da-card-body">Use to highlight destructive actions, errors, or critical warnings.</div>
+                    <div class="da-card-foot">
+                      <button class="btn btn-danger" style="font-size:var(--sm);">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="da-code-wrap">
+                <div class="da-code-top">
+                  <span class="da-code-label">HTML — no JS required</span>
+                  <button class="btn btn-ghost btn-icon da-copy-btn" aria-label="Copy code"><svg data-icon="download"></svg></button>
+                </div>
+                <pre class="da-code"><code>&lt;div class="da-card"&gt;
+  &lt;div class="da-card-head"&gt;Card Title&lt;/div&gt;
+  &lt;div class="da-card-body"&gt;Card content here.&lt;/div&gt;
+  &lt;div class="da-card-foot"&gt;
+    &lt;button class="btn"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Colour variants --&gt;
+&lt;div class="da-card da-card-success"&gt;...&lt;/div&gt;
+&lt;div class="da-card da-card-danger"&gt;...&lt;/div&gt;
+
+&lt;!-- Grid layout --&gt;
+&lt;div class="da-cards-grid"&gt;
+  &lt;div class="da-card"&gt;...&lt;/div&gt;
+  &lt;div class="da-card"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /da-accordion -->
+
+      </main>
+    </div><!-- /da-scroll -->
+  </div><!-- /da-body -->
+</div><!-- /da-app -->
+
+
+<!-- ═══════════════════════════════════════════════
+     MODALS — outside app shell
+     geUIHelper.modal('open') moves each into .overlay
+═══════════════════════════════════════════════ -->
+
+<div id="infoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+  <div class="modal-head">
+    <h4 id="infoModalTitle" class="text-pr">
+      <svg data-icon="eye"></svg>
+      Info Modal
+    </h4>
+  </div>
+  <p class="text-sm text-muted">
+    Opened with <code>geUIHelper.modal('open', 'infoModal')</code>. Focus is trapped —
+    Tab and Shift+Tab cycle within. Press <strong>Escape</strong> or click the backdrop to close.
+  </p>
+  <div class="modal-badges">
+    <span class="badge badge-primary"><svg data-icon="lock"></svg> Focus trapped</span>
+    <span class="badge badge-success"><svg data-icon="check"></svg> ARIA ready</span>
+    <span class="badge badge-muted">Esc closes</span>
+  </div>
+  <div class="modal-foot">
+    <button class="btn" id="closeInfoModal"><svg data-icon="x"></svg> Close</button>
+    <button class="btn btn-primary" id="confirmInfoModal"><svg data-icon="check"></svg> Got it</button>
+  </div>
+</div>
+
+<div id="dangerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="dangerModalTitle">
+  <div class="modal-head">
+    <h4 id="dangerModalTitle" class="text-da">
+      <svg data-icon="trash"></svg>
+      Delete Confirmation
+    </h4>
+  </div>
+  <p class="text-sm text-muted">
+    This action cannot be undone. The item will be permanently removed.
+  </p>
+  <div class="modal-foot">
+    <button class="btn" id="closeDangerModal"><svg data-icon="x"></svg> Cancel</button>
+    <button class="btn btn-danger" id="confirmDangerModal"><svg data-icon="trash"></svg> Yes, delete</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     CONTEXT MENU — outside app shell, position:fixed
+═══════════════════════════════════════════════ -->
+<div id="ctxMenu" class="ctx-menu" role="menu">
+  <div class="ctx-item" data-action="edit"><svg data-icon="edit"></svg> Edit</div>
+  <div class="ctx-item" data-action="copy"><svg data-icon="download"></svg> Copy</div>
+  <div class="ctx-item" data-action="share"><svg data-icon="folder-share"></svg> Share</div>
+  <hr class="ctx-divider">
+  <div class="ctx-item ctx-item-danger" data-action="delete"><svg data-icon="trash"></svg> Delete</div>
+</div>
+
+
+<script type="module" src="da-script.js"></script>
+</body>
+</html>

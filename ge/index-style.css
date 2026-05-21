@@ -1,0 +1,103 @@
+
+@layer etc {
+
+.zhi { font-weight: 100; font-family: "Zhi Mang Xing", serif; color: var(--da); z-index: 1; }
+.hub-card { position: relative; padding-top: calc(2 * var(--lg)); z-index: 0; }
+.hub-hero .zhi { font-size: 8rem; }
+.hub-card .zhi { font-size: 4rem; position: absolute; top: -40px; left: -20px; }
+.ref { width: calc( 2.1 * var(--cw)); }
+
+
+
+@layer pages {
+	
+  .hub-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--vlg) var(--lg);
+    gap: var(--xlg);
+ 	--cw: 240px;
+	--da: #f42;
+	--pr: #fc3;
+  }
+  .hub-hero {
+    text-align: center;
+    max-width: 560px;
+  }
+  .hub-hero h1 {
+    font-family: var(--font-mono);
+    font-size: var(--vlg);
+    color: var(--pr);
+    margin-bottom: var(--xs);
+  }
+  .hub-hero p {
+    font-family: var(--font-serif);
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--md);
+    width: 100%;
+    max-width: 760px;
+  }
+  .hub-card {
+    background: var(--bg-subtle);
+    /* border: 1px solid var(--border); */
+    border-radius: 8px;
+    padding: var(--lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sm);
+    text-decoration: none;
+    color: var(--fg);
+    width: var(--cw):
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .hub-card:hover {
+    border-color: var(--pr-border);
+    background: var(--pr-subtle);
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .hub-card-icon {
+    width: var(--xlg);
+    height: var(--xlg);
+    color: var(--pr);
+  }
+  .hub-card h3 {
+    font-family: var(--font-mono);
+    font-size: var(--md);
+    color: var(--pr);
+    margin: 0;
+  }
+  .hub-card p {
+    font-size: var(--sm);
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .hub-card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--vxs);
+    padding: var(--vxs) var(--xs);
+    background: var(--bg-inset);
+    border: 1px solid var(--border-muted);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: var(--sm);
+    color: var(--muted);
+    width: fit-content;
+  }
+  .hub-footer {
+    font-family: var(--font-mono);
+    font-size: var(--sm);
+    color: var(--muted);
+    text-align: center;
+  }
+}

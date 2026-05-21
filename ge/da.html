@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>搭 da — geUI Builder</title>
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="da-style.css">
+</head>
+<body>
+
+<div class="da-app">
+
+  <!-- Header -->
+  <header class="da-header">
+    <div class="da-header-left">
+      <span class="da-brand">搭</span>
+      <span class="da-brand-sub">- Da geUI Builder</span>
+    </div>
+    <div class="da-header-right">
+      <button class="btn btn-ghost btn-icon" id="themeToggle" aria-label="Toggle theme"></button>
+    </div>
+  </header>
+
+  <div class="da-body">
+
+    <!-- ── Left: component palette ── -->
+    <aside class="da-palette" aria-label="Components">
+      <span class="da-palette-label">Components</span>
+      <div id="daPaletteList"></div>
+    </aside>
+
+    <!-- ── Center: config + preview ── -->
+    <div class="da-builder">
+
+      <!-- Welcome (shown before any component selected) -->
+      <div class="da-welcome" id="daWelcome">
+        <svg class="da-welcome-icon" data-icon="layout-kanban"></svg>
+        <h2>Pick a component</h2>
+        <p>Choose any component from the left. Configure it, see it live, then copy the HTML.</p>
+      </div>
+
+      <!-- Workspace (shown once a component is selected) -->
+      <div class="da-workspace" id="daWorkspace" hidden>
+        <div class="da-config" id="daConfig"></div>
+        <div class="da-preview" id="daPreview">
+          <div class="da-preview-bar">
+            <span class="da-preview-label">Live Preview</span>
+          </div>
+          <div class="da-preview-inner" id="daPreviewInner"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Right: generated code ── -->
+    <aside class="da-code-panel">
+      <div class="da-code-header">
+        <span class="da-code-header-label">Generated HTML</span>
+        <button class="btn btn-primary btn-sm" id="daCopyBtn">
+          <svg data-icon="download"></svg>
+          Copy
+        </button>
+      </div>
+      <div class="da-code-scroll">
+        <pre id="daCodeOutput" class="da-code-empty">← pick a component</pre>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<script type="module" src="da-script.js"></script>
+</body>
+</html>

@@ -72,6 +72,10 @@
         <svg data-icon="edit"></svg>
         Form
       </a>
+      <a class="ken-nav-item" href="#sec-copy">
+        <svg data-icon="t-save"></svg>
+        Copy
+      </a>
       <a class="ken-nav-item" href="#sec-dom">
         <svg data-icon="settings-cog"></svg>
         DOM Utilities
@@ -465,6 +469,47 @@ el.innerHTML = icx.icon('trash', 'my-class');</pre>
         </section>
 
         <!-- ═══════════════════════════════════════════
+             SECTION: Copy
+        ═══════════════════════════════════════════ -->
+        <section class="demo-section" id="sec-copy">
+          <div class="demo-section-title">
+            <svg data-icon="t-save"></svg>
+            Copy — <code>geUIHelper.copy(btn, target, options?)</code>
+          </div>
+
+          <p class="text-muted text-sm">
+            Wires a button to copy the contents of a <code>textarea</code> or <code>pre</code> using <code>execCommand('copy')</code> — no clipboard permission required. The button label swaps briefly to confirm, then restores.
+          </p>
+
+          <div class="demo-card">
+            <div class="form-group">
+              <label for="copy-textarea">textarea</label>
+              <textarea id="copy-textarea" rows="3">import geUIHelper from './src/js/geui.js';
+import icx from './src/js/ge-icon.js';</textarea>
+            </div>
+            <div class="demo-row mt-md">
+              <button class="btn btn-primary" id="copyTextareaBtn">
+                <svg data-icon="t-save"></svg>
+                Copy textarea
+              </button>
+            </div>
+          </div>
+
+          <div class="demo-card mt-md">
+            <div class="code-block">
+              <pre id="copy-pre">geUIHelper.copy(btn, target);
+geUIHelper.copy(btn, target, { success: '✓ Done', duration: 2000 });</pre>
+            </div>
+            <div class="demo-row mt-md">
+              <button class="btn btn-primary" id="copyPreBtn">
+                <svg data-icon="t-save"></svg>
+                Copy pre
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
              SECTION: DOM Utilities
         ═══════════════════════════════════════════ -->
         <section class="demo-section" id="sec-dom">
@@ -800,6 +845,11 @@ class geDropdown extends geUIHelper {
                 <td class="api-desc">Auto-assign ids to un-labelled fields</td>
               </tr>
               <tr>
+                <td><code>geUIHelper.copy(btn, target, opts?)</code></td>
+                <td class="api-return">void</td>
+                <td class="api-desc">execCommand copy — no clipboard permission needed</td>
+              </tr>
+              <tr>
                 <td><code>geUIHelper.error(msg, err)</code></td>
                 <td class="api-return">void</td>
                 <td class="api-desc">console.error + error toast</td>
@@ -871,11 +921,6 @@ class geDropdown extends geUIHelper {
     </button>
   </div>
 </div>
-
-<!-- Theme direct buttons wired here (outside sidebar) -->
-<script>
-  // Handled in ken.js via DOMContentLoaded — these buttons are in #sec-theme
-</script>
 
 <script type="module" src="ken-script.js"></script>
 </body>
